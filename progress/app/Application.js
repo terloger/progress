@@ -8,12 +8,16 @@ Ext.define('progress.Application', {
     
     name: 'progress',
 
+    controllers : [
+        'Root@progress.controller'
+    ],
+
     stores: [
-        // TODO: add global / shared stores here
+        // add global / shared stores here
     ],
     
     launch: function () {
-        // TODO - Launch the application
+        // Launch the application
     },
 
     onAppUpdate: function () {
