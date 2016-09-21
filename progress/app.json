@@ -528,7 +528,7 @@
         "classic": {
             "toolkit": "classic",
             
-            "theme": "theme-triton",
+            "theme": "theme-gray",
             
             "sass": {
                 "generated": {
@@ -541,7 +541,7 @@
         "modern": {
             "toolkit": "modern",
             
-            "theme": "theme-triton",
+            "theme": "theme-material",
             
             "sass": {
                 "generated": {
