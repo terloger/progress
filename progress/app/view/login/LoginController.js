@@ -21,33 +21,29 @@ Ext.define('progress.view.login.LoginController', {
         if (form.isValid()) {
             Ext.getBody().mask(this.loginText);
 
-            // form.getValues()
-            console.log(form.getValues()); /* @killme it's debug log */
-
-            //if (!this.loginManager) {
-            //    this.loginManager = new Ticket.LoginManager({
-            //        session : this.getView().getSession(),
-            //        model : 'User'
-            //    });
-            //}
-            //
-            //this.loginManager.login({
-            //    data : form.getValues(),
-            //    scope : this,
-            //    success : 'onLoginSuccess',
-            //    failure : 'onLoginFailure'
-            //});
+            Ext.Ajax.request({
+                url : '/api/users/token.json',
+                method : 'POST',
+                params : form.getValues(),
+                scope : this,
+                success : this.onLoginSuccess,
+                failure : this.onLoginFailure
+            });
         }
     },
 
     onLoginFailure : function() {
-        // Do something
         Ext.getBody().unmask();
+        // todo
     },
 
-    onLoginSuccess : function(user) {
+    onLoginSuccess : function(resp) {
+        var response;
+
         Ext.getBody().unmask();
 
-        this.fireViewEvent('login', user);
+        response = Ext.decode(resp.responseText);
+
+        this.fireViewEvent('login', response.data);
     }
 });

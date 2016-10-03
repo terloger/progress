@@ -18,10 +18,11 @@ Ext.define('progress.controller.Root', {
         });
     },
 
-    onLogin : function(user) {
+    onLogin : function(data) {
         this.login.destroy();
 
-        this.user = user;
+        this.token = data.token;
+        this.user = data.user;
 
         this.showUI();
     },

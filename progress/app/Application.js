@@ -12,6 +12,10 @@ Ext.define('progress.Application', {
         'Root@progress.controller'
     ],
 
+    requires : [
+        'progress.Utils'
+    ],
+
     stores: [
         // add global / shared stores here
     ],
