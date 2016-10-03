@@ -4,3 +4,6 @@ bootstrap.json
 build/
 ext/
 samples/
+progress/sass/example/bootstrap.jsonp
+progress/classic.json
+progress/classic.jsonp
