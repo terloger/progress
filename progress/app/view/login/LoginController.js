@@ -3,7 +3,11 @@ Ext.define('progress.view.login.LoginController', {
 
     alias : 'controller.progress_login',
 
-    loginText : 'Logging in...',
+    loginText : 'Входим...',
+
+    handleShow : function() {
+        this.lookup('username').focus();
+    },
 
     onSpecialKey : function(field, e) {
         if (e.getKey() === e.ENTER) {

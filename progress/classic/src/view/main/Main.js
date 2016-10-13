@@ -1,16 +1,20 @@
 Ext.define('progress.view.main.Main', {
-    extend: 'Ext.tab.Panel',
+    extend: 'Ext.Panel',
     xtype: 'app-main',
 
+    title : 'Прогресс!',
+
     requires: [
-        'Ext.plugin.Viewport',
-        'Ext.window.MessageBox'
+        'Ext.plugin.Viewport'
+    ],
 
-        //'progress.view.main.MainController',
-        //'progress.view.main.MainModel',
-        //'progress.view.main.List'
+    layout : 'fit',
+
+    items : [
+        {
+            xtype : 'container',
+            margin : '20',
+            html : '<object type="image/svg+xml" data="resources/images/progress.svg" width="95%" height="100%"></object>'
+        }
     ]
-
-    //controller: 'main',
-    //viewModel: 'main'
 });

@@ -13,6 +13,7 @@ Ext.define('progress.Application', {
     ],
 
     requires : [
+        'progress.Consts',
         'progress.Utils'
     ],
 
@@ -32,5 +33,12 @@ Ext.define('progress.Application', {
                 }
             }
         );
+    },
+
+    statics : {
+        checkAuth : function() {
+            return !!progress.Utils.getCookie(progress.Consts.AUTH_COOKIE_NAME);
+        }
     }
+
 });

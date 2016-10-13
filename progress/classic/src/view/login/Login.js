@@ -11,8 +11,13 @@ Ext.define('progress.view.login.Login', {
     controller : 'progress_login',
     bodyPadding : 10,
 
-    title : 'Login',
+    title : 'Привет, кто ты?',
     closable : false,
+    modal : true,
+
+    listeners : {
+        show : 'handleShow'
+    },
 
     items : {
         xtype : 'form',
@@ -20,8 +25,9 @@ Ext.define('progress.view.login.Login', {
         items : [
             {
                 xtype : 'textfield',
+                reference : 'username',
                 name : 'username',
-                fieldLabel : 'Username',
+                fieldLabel : 'Пользователь',
                 allowBlank : false,
                 enableKeyEvents : true,
                 listeners : {
@@ -32,7 +38,7 @@ Ext.define('progress.view.login.Login', {
                 xtype : 'textfield',
                 name : 'password',
                 inputType : 'password',
-                fieldLabel : 'Password',
+                fieldLabel : 'Пароль',
                 allowBlank : false,
                 enableKeyEvents : true,
                 cls : 'password',
@@ -45,7 +51,7 @@ Ext.define('progress.view.login.Login', {
 
     buttons : [
         {
-            text : 'Login',
+            text : 'Войти',
             listeners : {
                 click : 'onLoginClick'
             }

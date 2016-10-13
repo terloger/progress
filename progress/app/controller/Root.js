@@ -9,6 +9,8 @@ Ext.define('progress.controller.Root', {
     loadingText : 'Loading...',
 
     onLaunch : function() {
+        console.log(progress.Application.checkAuth()); /* @killme it's debug log */
+
         this.login = new progress.view.login.Login({
             autoShow : true,
             listeners : {
