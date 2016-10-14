@@ -1,8 +1,3 @@
-/**
- * The main application class. An instance of this class is created by app.js when it
- * calls Ext.application(). This is the ideal place to handle application launch and
- * initialization details.
- */
 Ext.define('progress.Application', {
     extend: 'Ext.app.Application',
     
@@ -14,11 +9,12 @@ Ext.define('progress.Application', {
 
     requires : [
         'progress.Consts',
-        'progress.Utils'
+        'progress.Utils',
+        'progress.Api'
     ],
 
     stores: [
-        // add global / shared stores here
+        'progress.store.Users'
     ],
     
     launch: function () {
@@ -38,6 +34,26 @@ Ext.define('progress.Application', {
     statics : {
         checkAuth : function() {
             return !!progress.Utils.getCookie(progress.Consts.AUTH_COOKIE_NAME);
+        },
+
+        getAuthInfo : function() {
+            return {
+                token : progress.Utils.getCookie(progress.Consts.AUTH_COOKIE_NAME),
+                userId : progress.Utils.getCookie(progress.Consts.USER_ID_COOKIE_NAME)
+            }
+        },
+
+        setAuthInfo : function(token, userId) {
+            progress.Utils.setCookie(progress.Consts.AUTH_COOKIE_NAME, token);
+            progress.Utils.setCookie(progress.Consts.USER_ID_COOKIE_NAME, userId);
+        },
+
+        logout : function() {
+            delete(progress.TOKEN);
+            progress.Utils.removeCookie(progress.Consts.AUTH_COOKIE_NAME);
+            progress.Utils.removeCookie(progress.Consts.USER_ID_COOKIE_NAME);
+
+            window.location.reload();
         }
     }
 

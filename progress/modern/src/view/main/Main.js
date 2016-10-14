@@ -14,7 +14,6 @@ Ext.define('progress.view.main.Main', {
 
         'progress.view.main.MainController',
         'progress.view.main.MainModel',
-        'progress.view.main.List'
     ],
 
     controller: 'main',
@@ -35,9 +34,7 @@ Ext.define('progress.view.main.Main', {
             iconCls: 'x-fa fa-home',
             layout: 'fit',
             // The following grid shares a store with the classic version's grid as well!
-            items: [{
-                xtype: 'mainlist'
-            }]
+            items: []
         },{
             title: 'Users',
             iconCls: 'x-fa fa-user',

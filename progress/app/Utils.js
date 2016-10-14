@@ -45,7 +45,6 @@ Ext.define('progress.Utils', function() {
             options.expires = expires.toUTCString();
         }
 
-        // Fix to Ext.util.Cookies.clear
         if (!options.hasOwnProperty('path')) {
             options.path = '/';
         }
@@ -62,17 +61,6 @@ Ext.define('progress.Utils', function() {
         }
 
         document.cookie = cookie;
-
-        if (typeof(Storage) !== "undefined") {
-            if (value !== '') {
-                localStorage.setItem('cookie-' + name, value);
-                expires && localStorage.setItem('cookie-expires', expires);
-            } else {
-                localStorage.removeItem('cookie-' + name);
-                localStorage.removeItem('cookie-expires');
-            }
-        }
-
     }
 
     function removeCookie(name) {

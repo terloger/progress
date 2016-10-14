@@ -11,7 +11,7 @@ Ext.define('progress.view.login.Login', {
     controller : 'progress_login',
     bodyPadding : 10,
 
-    title : 'Привет, кто ты?',
+    title : 'Привет, прогрессируем?',
     closable : false,
     modal : true,
 
@@ -50,6 +50,11 @@ Ext.define('progress.view.login.Login', {
     },
 
     buttons : [
+        {
+            text : 'Присоединиться',
+            disabled : true
+        },
+        '->',
         {
             text : 'Войти',
             listeners : {

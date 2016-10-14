@@ -6,27 +6,40 @@ Ext.define('progress.controller.Root', {
         'progress.view.main.Main'
     ],
 
-    loadingText : 'Loading...',
+    loadingText : 'Загружаемся...',
 
     onLaunch : function() {
-        console.log(progress.Application.checkAuth()); /* @killme it's debug log */
+        var authInfo,
+            user;
 
-        this.login = new progress.view.login.Login({
-            autoShow : true,
-            listeners : {
-                scope : this,
-                login : 'onLogin'
-            }
-        });
+        if (!progress.Application.checkAuth()) {
+            new progress.view.login.Login({
+                autoShow : true,
+                listeners : {
+                    scope : this,
+                    login : 'onLogin'
+                }
+            });
+        } else {
+            authInfo = progress.Application.getAuthInfo();
+            progress.TOKEN = authInfo.token;
+
+            // todo : load user data by authInfo.userId
+            user = new progress.model.User({
+                id : authInfo.userId
+            });
+            user.load();
+        }
     },
 
-    onLogin : function(data) {
-        this.login.destroy();
+    onLogin : function(view, data) {
+        view.destroy();
 
-        this.token = data.token;
         this.user = data.user;
+        progress.TOKEN = data.token;
+        progress.Application.setAuthInfo(data.token, data.user.id);
 
-        this.showUI();
+        //this.showUI();
     },
 
     showUI : function() {
