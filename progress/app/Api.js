@@ -93,7 +93,7 @@ Ext.require(['progress.Consts'], function() {
 
                 headers = data.headers || (data.headers = {});
                 headers[HEADER.AUTHORIZATION] = progress.Consts.MAIN_AUTH_PREFIX + progress.TOKEN;
-                headers['Content-Type'] = 'application/json';
+                headers['Accept'] = 'application/json';
 
                 request = Ext.Ajax.request(data);
 

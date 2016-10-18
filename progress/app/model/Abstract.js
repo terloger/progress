@@ -17,6 +17,13 @@ Ext.define('progress.model.Abstract', function() {
             proxy : {
                 type : 'progress_rest'
             }
-        }
+        },
+
+        fields : [
+            {
+                name : 'id',
+                type : 'int'
+            }
+        ]
     };
 });
