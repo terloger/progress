@@ -541,7 +541,7 @@
         "modern": {
             "toolkit": "modern",
             
-            "theme": "theme-material",
+            "theme": "progress-modern-theme",
             
             "sass": {
                 "generated": {

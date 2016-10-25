@@ -3,10 +3,8 @@ Ext.define('progress.view.main.Main', {
     xtype : 'app-main',
 
     requires : [
-        'Ext.MessageBox',
-
         'progress.view.main.MainController',
-        'progress.view.main.MainModel',
+        'progress.view.main.MainModel'
     ],
 
     controller : 'main',
@@ -26,8 +24,9 @@ Ext.define('progress.view.main.Main', {
             title : 'Показатели',
             iconCls : 'x-fa fa-tasks',
             layout : 'fit',
-            // The following grid shares a store with the classic version's grid as well!
-            items : []
+            items : [
+
+            ]
         },
         {
             title : 'Ввод данных',
