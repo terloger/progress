@@ -1,58 +1,41 @@
-/**
- * This class is the main view for the application. It is specified in app.js as the
- * "mainView" property. That setting causes an instance of this class to be created and
- * added to the Viewport container.
- *
- * TODO - Replace the content of this view to suit the needs of your application.
- */
 Ext.define('progress.view.main.Main', {
-    extend: 'Ext.tab.Panel',
-    xtype: 'app-main',
+    extend : 'Ext.tab.Panel',
+    xtype : 'app-main',
 
-    requires: [
+    requires : [
         'Ext.MessageBox',
 
         'progress.view.main.MainController',
         'progress.view.main.MainModel',
     ],
 
-    controller: 'main',
-    viewModel: 'main',
+    controller : 'main',
+    viewModel : 'main',
 
-    defaults: {
-        tab: {
-            iconAlign: 'top'
+    defaults : {
+        tab : {
+            iconAlign : 'top'
         },
-        styleHtmlContent: true
+        styleHtmlContent : true
     },
 
-    tabBarPosition: 'bottom',
+    tabBarPosition : 'bottom',
 
-    items: [
+    items : [
         {
-            title: 'Home',
-            iconCls: 'x-fa fa-home',
-            layout: 'fit',
+            title : 'Показатели',
+            iconCls : 'x-fa fa-tasks',
+            layout : 'fit',
             // The following grid shares a store with the classic version's grid as well!
-            items: []
-        },{
-            title: 'Users',
-            iconCls: 'x-fa fa-user',
-            bind: {
-                html: '{loremIpsum}'
-            }
-        },{
-            title: 'Groups',
-            iconCls: 'x-fa fa-users',
-            bind: {
-                html: '{loremIpsum}'
-            }
-        },{
-            title: 'Settings',
-            iconCls: 'x-fa fa-cog',
-            bind: {
-                html: '{loremIpsum}'
-            }
+            items : []
+        },
+        {
+            title : 'Ввод данных',
+            iconCls : 'x-fa fa-table'
+        },
+        {
+            title : 'Настройки',
+            iconCls : 'x-fa fa-cog'
         }
     ]
 });

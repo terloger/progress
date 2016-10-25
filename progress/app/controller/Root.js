@@ -13,13 +13,17 @@ Ext.define('progress.controller.Root', {
             user;
 
         if (!progress.Application.checkAuth()) {
-            new progress.view.login.Login({
-                autoShow : true,
-                listeners : {
-                    scope : this,
-                    login : 'onLogin'
-                }
-            });
+            if (Ext.isClassic) {
+                new progress.view.login.Login({
+                    autoShow : true,
+                    listeners : {
+                        scope : this,
+                        login : 'onLogin'
+                    }
+                });
+            } else {
+                Ext.GlobalEvents.fireEvent('appNeedLogin');
+            }
         } else {
             authInfo = progress.Application.getAuthInfo();
             progress.TOKEN = authInfo.token;
