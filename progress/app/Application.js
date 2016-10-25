@@ -14,7 +14,14 @@ Ext.define('progress.Application', {
     ],
 
     stores: [
-        'progress.store.Users'
+        'progress.store.Users',
+        'progress.store.Days',
+        'progress.store.Loads',
+        'progress.store.SportNutritions',
+        'progress.store.TypeLoads',
+        'progress.store.Units',
+        'progress.store.ValuesLogs',
+        'progress.store.NutritionLogs'
     ],
     
     launch: function () {

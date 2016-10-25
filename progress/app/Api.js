@@ -9,7 +9,14 @@ Ext.require(['progress.Consts'], function() {
 
     var API = {
         ROOT : API_ROOT,
-        USERS : API_ROOT + '/users'
+        USERS : API_ROOT + '/users',
+        DAYS : API_ROOT + '/days',
+        LOADS : API_ROOT + '/loads',
+        SPORT_NUTRITION : API_ROOT + '/sport_nutrition',
+        TYPE_LOAD : API_ROOT + '/type_load',
+        UNITS : API_ROOT + '/units',
+        VALUES_LOG : API_ROOT + '/values_log',
+        NUTRITION_LOG : API_ROOT + '/nutrition_log'
     };
 
     /**
