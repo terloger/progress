@@ -1,10 +1,10 @@
 Ext.define('progress.view.main.Main', {
-    extend: 'Ext.Panel',
-    xtype: 'app-main',
+    extend : 'Ext.Panel',
+    xtype : 'app-main',
 
     title : 'Прогресс (лат. progressus — движение вперёд, успех) — направление развития от низшего к высшему, поступательное движение вперед, к лучшему.',
 
-    requires: [
+    requires : [
         'Ext.plugin.Viewport'
     ],
 

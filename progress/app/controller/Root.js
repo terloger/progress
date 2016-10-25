@@ -28,7 +28,6 @@ Ext.define('progress.controller.Root', {
             authInfo = progress.Application.getAuthInfo();
             progress.TOKEN = authInfo.token;
 
-            // todo : load user data by authInfo.userId
             user = new progress.model.User({
                 id : authInfo.userId
             });

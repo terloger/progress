@@ -24,6 +24,7 @@ Ext.define('progress.view.main.Main', {
             title : 'Показатели',
             iconCls : 'x-fa fa-tasks',
             layout : 'fit',
+            reference : 'dashboard',
             items : [
 
             ]
