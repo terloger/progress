@@ -7,7 +7,9 @@ Ext.define('progress.view.main.Main', {
         'progress.view.main.MainModel'
     ],
 
-    controller : 'main',
+    controller : {
+        type : 'progress_modern_main'
+    },
     viewModel : 'main',
 
     defaults : {
