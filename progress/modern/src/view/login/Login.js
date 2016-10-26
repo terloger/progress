@@ -7,8 +7,6 @@ Ext.define('progress.view.login.Login', {
 
     margin : 10,
 
-    height : '90%',
-
     items : [
         {
             xtype : 'fieldset',
