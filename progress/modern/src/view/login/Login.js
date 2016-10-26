@@ -1,16 +1,18 @@
 Ext.define('progress.view.login.Login', {
 
-    extend : 'Ext.form.Panel',
+    extend : 'Ext.panel.Panel',
     alias : 'widget.progress-modern-login',
 
-    shadow : true,
+    requires : [
+        'progress.view.login.LoginController'
+    ],
 
-    margin : 10,
+    controller : 'progress_modern_login',
 
     items : [
         {
-            xtype : 'fieldset',
-            title : 'Прогрессируем?',
+            xtype : 'formpanel',
+            reference : 'form',
             layout : {
                 type : 'vbox',
                 align : 'stretch'
@@ -19,10 +21,11 @@ Ext.define('progress.view.login.Login', {
             items : [
                 {
                     xtype : 'textfield',
-                    name : 'name',
+                    name : 'username',
                     label : 'Пользователь',
                     required : true,
-                    clearIcon : true
+                    clearIcon : true,
+                    margin : '10 0 0 0'
                 },
                 {
                     xtype : 'passwordfield',
@@ -32,6 +35,37 @@ Ext.define('progress.view.login.Login', {
                     clearIcon : true
                 }
             ]
+        },
+        {
+            xtype : 'container',
+            defaults : {
+                style : 'margin: 1em',
+                flex : 1
+            },
+            layout : {
+                type : 'hbox'
+            },
+            items : [
+                {
+                    xtype : 'container'
+                },
+                {
+                    xtype : 'button',
+                    text : 'Войти',
+                    ui : 'action',
+                    handler : 'onLoginClick'
+                }
+            ]
+        }
+    ],
+
+    buttons : [
+        '->',
+        {
+            text : 'Войти',
+            listeners : {
+                click : 'onLoginClick'
+            }
         }
     ]
 

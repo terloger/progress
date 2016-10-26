@@ -25,8 +25,9 @@ Ext.define('progress.view.login.LoginController', {
         if (form.isValid()) {
             Ext.getBody().mask(this.loginText);
 
-            Ext.Ajax.request({
-                url : '/api/users/token.json',
+            progress.Api.request({
+                url : progress.Api.API.USER_TOKEN,
+                withoutAuth : true,
                 method : 'POST',
                 params : form.getValues(),
                 scope : this,
@@ -41,13 +42,8 @@ Ext.define('progress.view.login.LoginController', {
         // todo
     },
 
-    onLoginSuccess : function(resp) {
-        var response;
-
+    onLoginSuccess : function(response) {
         Ext.getBody().unmask();
-
-        response = Ext.decode(resp.responseText);
-
         this.fireViewEvent('login', response.data);
     }
 });

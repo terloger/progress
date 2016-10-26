@@ -27,16 +27,26 @@ Ext.define('progress.view.main.Main', {
             iconCls : 'x-fa fa-tasks',
             reference : 'dashboard',
             items : [
-
+                {
+                    xtype : 'container',
+                    margin : '20',
+                    html : '<object type="image/svg+xml" data="resources/images/progress.svg" width="90%" height="50%"></object>'
+                }
             ]
         },
         {
             title : 'Ввод данных',
-            iconCls : 'x-fa fa-table'
+            iconCls : 'x-fa fa-table',
+            bind : {
+                disabled : '{notLogged}'
+            }
         },
         {
             title : 'Настройки',
-            iconCls : 'x-fa fa-cog'
+            iconCls : 'x-fa fa-cog',
+            bind : {
+                disabled : '{notLogged}'
+            }
         }
     ]
 });

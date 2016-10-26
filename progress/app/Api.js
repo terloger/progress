@@ -10,6 +10,7 @@ Ext.require(['progress.Consts'], function() {
     var API = {
         ROOT : API_ROOT,
         USERS : API_ROOT + '/users',
+        USER_TOKEN : API_ROOT + '/users/token',
         DAYS : API_ROOT + '/days',
         LOADS : API_ROOT + '/loads',
         SPORT_NUTRITION : API_ROOT + '/sport_nutrition',
@@ -99,7 +100,9 @@ Ext.require(['progress.Consts'], function() {
                 }, opts);
 
                 headers = data.headers || (data.headers = {});
-                headers[HEADER.AUTHORIZATION] = progress.Consts.MAIN_AUTH_PREFIX + progress.TOKEN;
+                if (!opts.withoutAuth) {
+                    headers[HEADER.AUTHORIZATION] = progress.Consts.MAIN_AUTH_PREFIX + progress.TOKEN;
+                }
                 headers['Accept'] = 'application/json';
 
                 request = Ext.Ajax.request(data);
