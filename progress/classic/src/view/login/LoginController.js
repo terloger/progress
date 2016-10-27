@@ -44,6 +44,6 @@ Ext.define('progress.view.login.LoginController', {
 
     onLoginSuccess : function(response) {
         Ext.getBody().unmask();
-        this.fireViewEvent('login', response.data);
+        this.fireViewEvent('login', response);
     }
 });

@@ -29,7 +29,6 @@ Ext.require(['progress.Consts'], function() {
          * Failure handler.
          */
         function failure(response, opts) {
-
             switch (parseInt(response.status, 10)) {
                 case 401:
                     //checkUnauthorised(response, opts);

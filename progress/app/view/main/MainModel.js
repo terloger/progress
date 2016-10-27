@@ -1,12 +1,9 @@
-/**
- * This class is the view model for the Main view of the application.
- */
 Ext.define('progress.view.main.MainModel', {
-    extend: 'Ext.app.ViewModel',
+    extend : 'Ext.app.ViewModel',
 
-    alias: 'viewmodel.main',
+    alias : 'viewmodel.main',
 
-    data: {
-        name: 'progress'
+    data : {
+        name : 'progress'
     }
 });

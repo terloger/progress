@@ -24,6 +24,43 @@ Ext.define('progress.model.Abstract', function() {
                 name : 'id',
                 type : 'int'
             }
-        ]
+        ],
+
+        saveWithPromise : function(params) {
+            var me = this;
+
+            return new Ext.Promise(function(resolve, reject) {
+                me.save({
+                    params : params || {},
+                    scope : me,
+                    success : function(response) {
+                        resolve(response.responseText);
+                    },
+                    failure : function(response) {
+                        reject(response.status);
+                    }
+                });
+            });
+        },
+
+        loadWithPromise : function(opts) {
+            var me = this,
+                args = Array.prototype.slice.call(arguments);
+
+            return new Ext.Promise(function(resolve, reject) {
+                args[0] = Ext.apply(args[0] || {}, {
+                    callback : function(rec, operation) {
+                        // ignore operation.getRecords().length
+                        if (operation && operation.wasSuccessful()) {
+                            resolve(rec);
+                        } else {
+                            reject();
+                        }
+                    }
+                });
+
+                me.load.apply(me, args);
+            });
+        }
     };
 });

@@ -1,12 +1,21 @@
 Ext.define('progress.view.main.Main', {
-    extend : 'Ext.Panel',
+
     xtype : 'app-main',
 
-    title : 'Прогресс (лат. progressus — движение вперёд, успех) — направление развития от низшего к высшему, поступательное движение вперед, к лучшему.',
+    extend : 'Ext.Panel',
 
     requires : [
+        'progress.view.main.MainController',
+        'progress.view.main.MainModel',
         'Ext.plugin.Viewport'
     ],
+
+    controller : {
+        type : 'progress_main'
+    },
+    viewModel : 'main',
+
+    title : 'Прогресс (лат. progressus — движение вперёд, успех) — направление развития от низшего к высшему, поступательное движение вперед, к лучшему.',
 
     layout : 'fit',
 
