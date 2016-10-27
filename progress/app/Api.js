@@ -12,6 +12,7 @@ Ext.require(['progress.Consts'], function() {
         USERS : API_ROOT + '/users',
         USER_TOKEN : API_ROOT + '/users/token',
         DAYS : API_ROOT + '/days',
+        DAYS_DAY : API_ROOT + '/days/day',
         LOADS : API_ROOT + '/loads',
         SPORT_NUTRITION : API_ROOT + '/sport_nutrition',
         TYPE_LOAD : API_ROOT + '/type_load',

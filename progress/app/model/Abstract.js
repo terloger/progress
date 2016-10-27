@@ -54,7 +54,7 @@ Ext.define('progress.model.Abstract', function() {
                         if (operation && operation.wasSuccessful()) {
                             resolve(rec);
                         } else {
-                            reject();
+                            reject(operation.error.status);
                         }
                     }
                 });

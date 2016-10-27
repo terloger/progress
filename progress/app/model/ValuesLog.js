@@ -5,6 +5,10 @@ Ext.define('progress.model.ValuesLog', function() {
     return {
         extend : 'progress.model.Abstract',
 
+        requires : [
+            'progress.model.Unit'
+        ],
+
         proxy : {
             type : 'progress_rest',
             url : API.VALUES_LOG
@@ -31,6 +35,14 @@ Ext.define('progress.model.ValuesLog', function() {
             {
                 name : 'description',
                 type : 'string'
+            }
+        ],
+
+        hasOne : [
+            {
+                model : 'progress.model.Unit',
+                name : 'unit',
+                associationKey : 'unit'
             }
         ]
     };

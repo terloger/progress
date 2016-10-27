@@ -1,7 +1,7 @@
 Ext.define('progress.view.login.Login', {
 
     extend : 'Ext.panel.Panel',
-    alias : 'widget.progress-modern-login',
+    alias : 'widget.progress_modern_login',
 
     requires : [
         'progress.view.login.LoginController'
@@ -56,16 +56,6 @@ Ext.define('progress.view.login.Login', {
                     handler : 'onLoginClick'
                 }
             ]
-        }
-    ],
-
-    buttons : [
-        '->',
-        {
-            text : 'Войти',
-            listeners : {
-                click : 'onLoginClick'
-            }
         }
     ]
 

@@ -5,5 +5,20 @@ Ext.define('progress.view.main.MainModel', {
 
     data : {
         name : 'progress'
+    },
+
+    stores : {
+        typeLoads : {
+            type : 'type_loads',
+            autoLoad : true
+        },
+        units : {
+            type : 'units',
+            autoLoad : true
+        },
+        sportNutritions : {
+            type : 'sport_nutritions',
+            autoLoad : true
+        }
     }
 });

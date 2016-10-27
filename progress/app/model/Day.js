@@ -5,6 +5,12 @@ Ext.define('progress.model.Day', function() {
     return {
         extend : 'progress.model.Abstract',
 
+        requires : [
+            'progress.model.Load',
+            'progress.model.ValuesLog',
+            'progress.model.NutritionLog'
+        ],
+
         proxy : {
             type : 'progress_rest',
             url : API.DAYS
@@ -12,9 +18,12 @@ Ext.define('progress.model.Day', function() {
 
         fields : [
             {
+                name : 'id'
+            },
+            {
                 name : 'date',
                 type : 'date',
-                dateFormat : 'c'
+                dateFormat : 'Y-m-d'
             },
             {
                 name : 'user_id',
@@ -23,6 +32,24 @@ Ext.define('progress.model.Day', function() {
             {
                 name : 'description',
                 type : 'string'
+            }
+        ],
+
+        hasMany : [
+            {
+                model : 'progress.model.Load',
+                name : 'loads',
+                associationKey : 'loads'
+            },
+            {
+                model : 'progress.model.ValuesLog',
+                name : 'values_log',
+                associationKey : 'values_log'
+            },
+            {
+                model : 'progress.model.NutritionLog',
+                name : 'nutrition_log',
+                associationKey : 'nutrition_log'
             }
         ]
     };

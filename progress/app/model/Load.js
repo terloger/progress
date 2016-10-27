@@ -5,6 +5,10 @@ Ext.define('progress.model.Load', function() {
     return {
         extend : 'progress.model.Abstract',
 
+        requires : [
+            'progress.model.TypeLoad'
+        ],
+
         proxy : {
             type : 'progress_rest',
             url : API.LOADS
@@ -22,6 +26,14 @@ Ext.define('progress.model.Load', function() {
             {
                 name : 'description',
                 type : 'string'
+            }
+        ],
+
+        hasOne : [
+            {
+                model : 'progress.model.TypeLoad',
+                name : 'type_load',
+                associationKey : 'type_load'
             }
         ]
     };

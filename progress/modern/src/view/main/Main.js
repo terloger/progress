@@ -4,7 +4,8 @@ Ext.define('progress.view.main.Main', {
 
     requires : [
         'progress.view.main.MainController',
-        'progress.view.main.MainModel'
+        'progress.view.main.MainModel',
+        'progress.view.data.Form'
     ],
 
     controller : {
@@ -37,16 +38,15 @@ Ext.define('progress.view.main.Main', {
         {
             title : 'Ввод данных',
             iconCls : 'x-fa fa-table',
-            bind : {
-                disabled : '{notLogged}'
-            }
+            items : [
+                {
+                    xtype : 'progress_modern_data_form'
+                }
+            ]
         },
         {
             title : 'Настройки',
-            iconCls : 'x-fa fa-cog',
-            bind : {
-                disabled : '{notLogged}'
-            }
+            iconCls : 'x-fa fa-cog'
         }
     ]
 });
