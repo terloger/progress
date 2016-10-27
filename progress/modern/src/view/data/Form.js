@@ -19,8 +19,6 @@ Ext.define('progress.view.data.Form', {
         {
             xtype : 'textareafield',
             label : 'Описание дня',
-            clearIcon : true,
-            margin : '10 0 0 0',
             bind : {
                 value : '{dayData.description}'
             }
@@ -42,7 +40,7 @@ Ext.define('progress.view.data.Form', {
                     xtype : 'button',
                     text : 'Сохранить',
                     ui : 'action',
-                    handler : 'onLoginClick'
+                    handler : 'onSave'
                 }
             ]
         }
