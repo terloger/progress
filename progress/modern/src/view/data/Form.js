@@ -4,6 +4,10 @@ Ext.define('progress.view.data.Form', {
 
     alias : 'widget.progress_modern_data_form',
 
+    requires : [
+        'progress.view.data.ItemsContainer'
+    ],
+
     viewModel : {},
 
     items : [
@@ -23,6 +27,15 @@ Ext.define('progress.view.data.Form', {
                 value : '{dayData.description}'
             }
         },
+        {
+            xtype : 'progress_modern_data_items_container',
+            title : 'Нагрузка',
+            bind : {
+                store : '{typeLoads}',
+                valueStore : '{dayData.loads}'
+            }
+        },
+
         {
             xtype : 'container',
             defaults : {

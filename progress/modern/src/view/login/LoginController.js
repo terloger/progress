@@ -1,9 +1,10 @@
 Ext.define('progress.view.login.LoginController', {
+
     extend : 'Ext.app.ViewController',
 
     alias : 'controller.progress_modern_login',
 
-    handleShow : function() {
+    onShow : function() {
         this.lookup('username').focus();
     },
 

@@ -1,6 +1,7 @@
 Ext.define('progress.view.login.Login', {
 
     extend : 'Ext.panel.Panel',
+
     alias : 'widget.progress_modern_login',
 
     requires : [
@@ -8,6 +9,10 @@ Ext.define('progress.view.login.Login', {
     ],
 
     controller : 'progress_modern_login',
+
+    listeners : {
+        show : 'onShow'
+    },
 
     items : [
         {
@@ -22,6 +27,7 @@ Ext.define('progress.view.login.Login', {
                 {
                     xtype : 'textfield',
                     name : 'username',
+                    reference : 'username',
                     label : 'Пользователь',
                     required : true,
                     clearIcon : true,
