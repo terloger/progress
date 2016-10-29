@@ -29,8 +29,22 @@ Ext.define('progress.view.main.BaseMainController', {
     },
 
     onSetUser : function(user) {
+        var me = this;
+
         this.getViewModel().set('user', user);
-        this.loadCurrentDay();
+        this.loadDictData().then(function() {
+            me.loadCurrentDay();
+        });
+    },
+
+    loadDictData : function() {
+        var vm = this.getViewModel();
+
+        return Ext.Promise.all([
+            vm.getStore('typeLoads').loadWithPromise(),
+            vm.getStore('units').loadWithPromise(),
+            vm.getStore('sportNutritions').loadWithPromise()
+        ]);
     },
 
     loadCurrentDay : function() {

@@ -9,16 +9,13 @@ Ext.define('progress.view.main.MainModel', {
 
     stores : {
         typeLoads : {
-            type : 'type_loads',
-            autoLoad : true
+            type : 'type_loads'
         },
         units : {
-            type : 'units',
-            autoLoad : true
+            type : 'units'
         },
         sportNutritions : {
-            type : 'sport_nutritions',
-            autoLoad : true
+            type : 'sport_nutritions'
         }
     }
 });

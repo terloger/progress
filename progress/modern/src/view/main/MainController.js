@@ -4,9 +4,12 @@ Ext.define('progress.view.main.MainController', {
 
     alias: 'controller.progress_modern_main',
 
+    requires : [
+        'progress.view.login.Login'
+    ],
+
     onAppNeedLogin : function() {
-        var loginOverlay = Ext.Viewport.add({
-            xtype : 'progress-modern-login',
+        var loginOverlay = Ext.Viewport.add(new progress.view.login.Login({
             floated : true,
             modal : true,
             showAnimation : {
@@ -29,7 +32,7 @@ Ext.define('progress.view.main.MainController', {
                 scope : this,
                 login : 'onLogin'
             }
-        });
+        }));
         loginOverlay.show();
     }
 
