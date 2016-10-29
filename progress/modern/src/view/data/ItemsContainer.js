@@ -11,11 +11,15 @@ Ext.define('progress.view.data.ItemsContainer', {
 
     controller : 'progress_modern_data_items_container',
 
-    viewModel : {},
+    viewModel : {
+
+    },
 
     config : {
         store : null,
-        valueStore : null
+        valueStore : null,
+        valueIdent : null,
+        valueName : null
     },
 
     items : [],
@@ -38,10 +42,7 @@ Ext.define('progress.view.data.ItemsContainer', {
         if (store) {
             store.on({
                 scope : this,
-                add : 'onStoreDataChanged',
-                remove : 'onStoreDataChanged',
-                update : 'onStoreDataChanged',
-                refresh : 'onStoreDataChanged'
+                load : 'onStoreDataChanged'
             });
             me.onStoreDataChanged(store);
         }
@@ -50,7 +51,18 @@ Ext.define('progress.view.data.ItemsContainer', {
     /**
      * Called when the internal {@link #store}'s data has changed.
      */
-    onStoreDataChanged : function(store) {},
+    onStoreDataChanged : function(store) {
+        var me = this;
+
+        me.permanented = [];
+        store.each(function(val) {
+            if (val.get('is_permanent')) {
+                me.permanented.push(val);
+            }
+        });
+
+        this.buildItems();
+    },
 
     applyValueStore : function(store) {
         if (store) {
@@ -68,6 +80,8 @@ Ext.define('progress.view.data.ItemsContainer', {
         }
 
         if (store) {
+            this.getViewModel().set('values', store);
+
             store.on({
                 scope : this,
                 add : 'onValueStoreDataChanged',
@@ -83,22 +97,101 @@ Ext.define('progress.view.data.ItemsContainer', {
      * Called when the internal {@link #store}'s data has changed.
      */
     onValueStoreDataChanged : function(store) {
-        this.buildItems();
+        this.buildValueItems();
     },
 
     buildItems : function() {
+        var me = this,
+            store = this.getStore(),
+            valueStore = this.getValueStore(),
+            selectorStore = Ext.data.StoreManager.lookup({
+                type : store.type
+            }),
+            valueItems = [];
+
+        this.removeAll();
+
         // permanent
+        this.add({
+            xtype : 'container',
+            reference : 'permanentValuesBlock',
+            items : []
+        });
 
         // value chooser
+        selectorStore.setData(store.getRange());
+        selectorStore.setFilters([
+            {
+                property : 'is_permanent',
+                value : false
+            }
+        ]);
         this.add({
-            xtype : 'selectfield',
-            label : 'Тип нагрузки',
-            store : this.getStore(),
-            valueField : 'id',
-            displayField : 'name'
+            xtype : 'container',
+            layout : 'hbox',
+            items : [
+                {
+                    xtype : 'selectfield',
+                    label : this.getValueName(),
+                    store : selectorStore,
+                    autoSelect : false,
+                    valueField : 'id',
+                    displayField : 'name',
+                    reference : 'valueSelector',
+                    flex : 1
+                },
+                {
+                    xtype : 'button',
+                    iconCls : 'x-fa fa-plus',
+                    handler : 'onAddValue',
+                    hidden : true,
+                    bind : {
+                        hidden : '{!valueSelector.selection.id}'
+                    }
+                }
+            ],
+            margin : '0 0 10 0'
         });
 
         // values
+        if (valueStore) {
+            valueStore.each(function(val) {
+                valueItems.push({
+                    xtype : 'selectfield',
+                    store : store,
+                    valueField : 'id',
+                    displayField : 'name',
+                    selection : store.getById(val.get(me.getValueIdent()))
+                });
+            });
+        }
+
+        this.add({
+            xtype : 'container',
+            reference : 'valuesBlock',
+            items : valueItems
+        });
+    },
+
+    buildValueItems : function() {
+        var me = this,
+            valuesBlock = this.down('[reference=valuesBlock]'),
+            store = this.getStore(),
+            valueStore = this.getValueStore();
+
+        valuesBlock.removeAll();
+        if (valueStore) {
+            valueStore.each(function(val) {
+                valuesBlock.add({
+                    xtype : 'selectfield',
+                    store : store,
+                    valueField : 'id',
+                    displayField : 'name',
+                    selection : store.getById(val.get(me.getValueIdent())),
+                    margin : 0
+                });
+            });
+        }
     }
 
 });

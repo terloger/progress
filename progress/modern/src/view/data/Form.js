@@ -13,7 +13,7 @@ Ext.define('progress.view.data.Form', {
     items : [
         {
             xtype : 'datepickerfield',
-            label : 'Сегодня',
+            label : 'Дата',
             dateFormat : 'd.m.Y',
             readOnly : true,
             bind : {
@@ -30,9 +30,21 @@ Ext.define('progress.view.data.Form', {
         {
             xtype : 'progress_modern_data_items_container',
             title : 'Нагрузка',
+            valueIdent : 'type_load_id',
+            valueName : 'Тип нагрузки',
             bind : {
                 store : '{typeLoads}',
-                valueStore : '{dayData.loads}'
+                valueStore : '{dayData.loads}',
+            }
+        },
+        {
+            xtype : 'progress_modern_data_items_container',
+            title : 'Показатели',
+            valueIdent : 'unit_id',
+            valueName : 'Тип показателя',
+            bind : {
+                store : '{units}',
+                valueStore : '{dayData.values_log}',
             }
         },
 
