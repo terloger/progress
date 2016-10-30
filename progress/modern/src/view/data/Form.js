@@ -4,6 +4,8 @@ Ext.define('progress.view.data.Form', {
 
     alias : 'widget.progress_modern_data_form',
 
+    cls : 'progress_modern_data_form',
+
     requires : [
         'progress.view.data.ItemsContainer'
     ],
@@ -11,15 +13,6 @@ Ext.define('progress.view.data.Form', {
     viewModel : {},
 
     items : [
-        {
-            xtype : 'datepickerfield',
-            label : 'Дата',
-            dateFormat : 'd.m.Y',
-            readOnly : true,
-            bind : {
-                value : '{dayData.date}'
-            }
-        },
         {
             xtype : 'textareafield',
             label : 'Описание дня',
@@ -30,44 +23,36 @@ Ext.define('progress.view.data.Form', {
         {
             xtype : 'progress_modern_data_items_container',
             title : 'Нагрузка',
+            margin : '10 0 0 0',
             valueIdent : 'type_load_id',
-            valueName : 'Тип нагрузки',
+            valueName : 'Выбрать нагрузку',
             bind : {
                 store : '{typeLoads}',
-                valueStore : '{dayData.loads}',
+                valueStore : '{dayData.loads}'
             }
         },
         {
             xtype : 'progress_modern_data_items_container',
             title : 'Показатели',
+            margin : '10 0 0 0',
             valueIdent : 'unit_id',
-            valueName : 'Тип показателя',
+            valueName : 'Выбрать показатель',
+            withPermanent : true,
             bind : {
                 store : '{units}',
-                valueStore : '{dayData.values_log}',
+                valueStore : '{dayData.values_log}'
             }
         },
-
         {
-            xtype : 'container',
-            defaults : {
-                style : 'margin: 1em',
-                flex : 1
-            },
-            layout : {
-                type : 'hbox'
-            },
-            items : [
-                {
-                    xtype : 'container'
-                },
-                {
-                    xtype : 'button',
-                    text : 'Сохранить',
-                    ui : 'action',
-                    handler : 'onSave'
-                }
-            ]
+            xtype : 'progress_modern_data_items_container',
+            title : 'Спортпит',
+            margin : '10 0 0 0',
+            valueIdent : 'sport_nutrition_id',
+            valueName : 'Выбрать тип',
+            bind : {
+                store : '{sportNutritions}',
+                valueStore : '{dayData.nutrition_log}'
+            }
         }
     ]
 

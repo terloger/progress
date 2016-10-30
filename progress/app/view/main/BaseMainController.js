@@ -33,7 +33,7 @@ Ext.define('progress.view.main.BaseMainController', {
 
         this.getViewModel().set('user', user);
         this.loadDictData().then(function() {
-            me.loadCurrentDay();
+            me.loadDay();
         });
     },
 
@@ -47,12 +47,12 @@ Ext.define('progress.view.main.BaseMainController', {
         ]);
     },
 
-    loadCurrentDay : function() {
+    loadDay : function(dayVal) {
         var vm = this.getViewModel(),
             day;
 
         day = new progress.model.Day({
-            id : Ext.Date.format(new Date(), 'Y-m-d')
+            id : dayVal || Ext.Date.format(new Date(), 'Y-m-d')
         });
         day.getProxy().setUrl(progress.Api.API.DAYS_DAY);
         day.phantom = true;
@@ -61,6 +61,7 @@ Ext.define('progress.view.main.BaseMainController', {
             vm.set('dayData', rec);
         }, function(code) {
             day.getProxy().setUrl(progress.Api.API.DAYS);
+
             if (code === 404) {
                 // create new day record
                 var newDayRec = new progress.model.Day({
@@ -68,7 +69,9 @@ Ext.define('progress.view.main.BaseMainController', {
                     user_id : vm.get('user.id')
                 });
                 newDayRec.saveWithPromise().then(function() {
-                    vm.set('dayData', newDayRec);
+                    newDayRec.loadWithPromise().then(function(rec) {
+                        vm.set('dayData', rec);
+                    });
                 });
             }
         });

@@ -34,6 +34,28 @@ Ext.define('progress.view.main.MainController', {
             }
         }));
         loginOverlay.show();
+    },
+
+    onSaveData : function() {
+        var dayData = this.getViewModel().get('dayData');
+
+        dayData.saveWithPromise();
+        dayData.loads().sync();
+        dayData.values_log().sync();
+    },
+
+    onShowPrev : function() {
+        var date = this.getViewModel().get('dayData.date'),
+            prevDate = Ext.Date.add(date, Ext.Date.DAY, -1);
+
+        this.loadDay(Ext.Date.format(prevDate, 'Y-m-d'));
+    },
+
+    onShowNext : function() {
+        var date = this.getViewModel().get('dayData.date'),
+            prevDate = Ext.Date.add(date, Ext.Date.DAY, 1);
+
+        this.loadDay(Ext.Date.format(prevDate, 'Y-m-d'));
     }
 
 });

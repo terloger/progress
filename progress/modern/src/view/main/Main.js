@@ -38,9 +38,44 @@ Ext.define('progress.view.main.Main', {
         {
             title : 'Ввод данных',
             iconCls : 'x-fa fa-table',
+            scrollable : true,
             items : [
                 {
-                    xtype : 'progress_modern_data_form'
+                    docked : 'top',
+                    ui : 'light',
+                    xtype : 'toolbar',
+                    items : [
+                        {
+                            xtype : 'button',
+                            iconCls : 'x-fa fa-long-arrow-left',
+                            handler : 'onShowPrev'
+                        },
+                        {
+                            xtype : 'datepickerfield',
+                            dateFormat : 'd.m.Y',
+                            disabled : true,
+                            width : 120,
+                            bind : {
+                                value : '{dayData.date}'
+                            }
+                        },
+                        {
+                            xtype : 'button',
+                            iconCls : 'x-fa fa-long-arrow-right',
+                            handler : 'onShowNext'
+                            // todo block in future
+                        },
+                        '->',
+                        {
+                            xtype : 'button',
+                            iconCls : 'x-fa fa-floppy-o',
+                            handler : 'onSaveData'
+                        }
+                    ]
+                },
+                {
+                    xtype : 'progress_modern_data_form',
+                    reference : 'dataForm'
                 }
             ]
         },
