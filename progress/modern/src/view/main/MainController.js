@@ -42,6 +42,7 @@ Ext.define('progress.view.main.MainController', {
         dayData.saveWithPromise();
         dayData.loads().sync();
         dayData.values_log().sync();
+        dayData.nutrition_log().sync();
     },
 
     onShowPrev : function() {
