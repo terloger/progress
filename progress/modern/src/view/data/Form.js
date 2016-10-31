@@ -25,7 +25,7 @@ Ext.define('progress.view.data.Form', {
             title : 'Нагрузка',
             margin : '10 0 0 0',
             valueIdent : 'type_load_id',
-            valueName : 'Выбрать нагрузку',
+            valueName : 'Добавить нагрузку',
             bind : {
                 store : '{typeLoads}',
                 valueStore : '{dayData.loads}'
@@ -36,7 +36,7 @@ Ext.define('progress.view.data.Form', {
             title : 'Показатели',
             margin : '10 0 0 0',
             valueIdent : 'unit_id',
-            valueName : 'Выбрать показатель',
+            valueName : 'Добавить показатель',
             withPermanent : true,
             bind : {
                 store : '{units}',
@@ -48,7 +48,7 @@ Ext.define('progress.view.data.Form', {
             title : 'Спортпит',
             margin : '10 0 0 0',
             valueIdent : 'sport_nutrition_id',
-            valueName : 'Выбрать тип',
+            valueName : 'Добавить',
             bind : {
                 store : '{sportNutritions}',
                 valueStore : '{dayData.nutrition_log}'

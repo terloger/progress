@@ -11,7 +11,7 @@ Ext.define('progress.model.NutritionLog', function() {
 
         proxy : {
             type : 'progress_rest',
-            url : API.VALUES_LOG
+            url : API.NUTRITION_LOG
         },
 
         fields : [

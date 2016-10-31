@@ -36,13 +36,28 @@ Ext.define('progress.view.main.MainController', {
         loginOverlay.show();
     },
 
+    setLoadingState : function(loading) {
+        if (loading) {
+            Ext.Viewport.setMasked({
+                xtype : 'loadmask',
+                message : 'Загружаем данные...'
+            });
+        } else {
+            Ext.Viewport.setMasked(false);
+        }
+    },
+
     onSaveData : function() {
         var dayData = this.getViewModel().get('dayData');
 
-        dayData.saveWithPromise();
-        dayData.loads().sync();
-        dayData.values_log().sync();
-        dayData.nutrition_log().sync();
+        Ext.Promise.all([
+            dayData.saveWithPromise(),
+            dayData.loads().saveWithPromise(),
+            dayData.values_log().saveWithPromise(),
+            dayData.nutrition_log().saveWithPromise()
+        ]).then(function() {
+            Ext.toast('Данные сохранены.')
+        });
     },
 
     onShowPrev : function() {
@@ -57,6 +72,10 @@ Ext.define('progress.view.main.MainController', {
             prevDate = Ext.Date.add(date, Ext.Date.DAY, 1);
 
         this.loadDay(Ext.Date.format(prevDate, 'Y-m-d'));
+    },
+
+    onReloadCurrentDay : function() {
+        this.loadDay(Ext.Date.format(new Date(), 'Y-m-d'))
     }
 
 });

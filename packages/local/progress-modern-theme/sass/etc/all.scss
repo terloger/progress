@@ -4,3 +4,13 @@
     color: #64b5f6 !important;
   }
 }
+
+.x-disabled {
+  .x-trigger {
+    display: none !important;
+  }
+}
+
+.x-textfield.x-disabled .x-input-el {
+  color: rgba(0, 0, 0, 0.6) !important;
+}

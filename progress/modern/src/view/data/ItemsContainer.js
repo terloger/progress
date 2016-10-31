@@ -151,15 +151,9 @@ Ext.define('progress.view.data.ItemsContainer', {
                     displayField : 'name',
                     reference : 'valueSelector',
                     labelAlign : 'placeholder',
-                    flex : 1
-                },
-                {
-                    xtype : 'button',
-                    iconCls : 'x-fa fa-plus-circle',
-                    handler : 'onAddValue',
-                    hidden : true,
-                    bind : {
-                        hidden : '{!valueSelector.selection.id}'
+                    flex : 1,
+                    listeners : {
+                        change : 'onValueSelectorChange'
                     }
                 }
             ],
@@ -188,6 +182,7 @@ Ext.define('progress.view.data.ItemsContainer', {
 
     buildValueItems : function() {
         var me = this,
+            vm = this.getViewModel(),
             valuesBlock = this.down('[reference=valuesBlock]'),
             permanentBlock = this.down('[reference=permanentValuesBlock]'),
             store = this.getStore(),
@@ -203,9 +198,38 @@ Ext.define('progress.view.data.ItemsContainer', {
                 if (unit.get('is_permanent')) {
                     permanentBlock.add(me.getValueField(val));
                 } else {
-                    valuesBlock.add(me.getValueField(val));
+                    valuesBlock.add({
+                        xtype : 'container',
+                        layout : 'hbox',
+                        items : [
+                            Ext.Object.merge(me.getValueField(val), {flex : 1}),
+                            {
+                                xtype : 'button',
+                                iconCls : 'x-fa fa-times',
+                                ui : 'decline',
+                                _record : val,
+                                handler : 'onRemoveValue'
+                            }
+                        ],
+                        margin : '0 0 5 10'
+                    })
                 }
             });
+        }
+
+        if (this.withPermanent && permanentBlock.items.getCount() === 0) {
+            // autocreate permanents values
+            Ext.defer(function() {
+                Ext.Array.each(me.permanented, function(perConfig) {
+                    var data = {
+                        day_id : vm.get('dayData.id'),
+                        value : '0'
+                    };
+
+                    data[me.getValueIdent()] = perConfig.getId();
+                    valueStore.add(data);
+                });
+            }, 100);
         }
     },
 
@@ -261,6 +285,7 @@ Ext.define('progress.view.data.ItemsContainer', {
             case 'string':
                 return {
                     xtype : 'textfield',
+                    clearIcon : false,
                     viewModel : {
                         data : {
                             record : val
@@ -277,6 +302,7 @@ Ext.define('progress.view.data.ItemsContainer', {
             case 'float':
                 return {
                     xtype : 'numberfield',
+                    clearIcon : false,
                     viewModel : {
                         data : {
                             record : val
@@ -296,6 +322,7 @@ Ext.define('progress.view.data.ItemsContainer', {
                     valueField : 'id',
                     displayField : 'name',
                     selection : store.getById(val.get(this.getValueIdent())),
+                    disabled : true,
                     margin : 0
                 };
         }

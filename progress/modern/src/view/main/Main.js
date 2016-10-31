@@ -47,6 +47,7 @@ Ext.define('progress.view.main.Main', {
                     items : [
                         {
                             xtype : 'button',
+                            ui : 'round',
                             iconCls : 'x-fa fa-long-arrow-left',
                             handler : 'onShowPrev'
                         },
@@ -54,7 +55,7 @@ Ext.define('progress.view.main.Main', {
                             xtype : 'datepickerfield',
                             dateFormat : 'd.m.Y',
                             disabled : true,
-                            width : 120,
+                            width : 85,
                             bind : {
                                 value : '{dayData.date}'
                             }
@@ -66,6 +67,11 @@ Ext.define('progress.view.main.Main', {
                             // todo block in future
                         },
                         '->',
+                        {
+                            xtype : 'button',
+                            iconCls : 'x-fa fa-refresh',
+                            handler : 'onReloadCurrentDay'
+                        },
                         {
                             xtype : 'button',
                             iconCls : 'x-fa fa-floppy-o',

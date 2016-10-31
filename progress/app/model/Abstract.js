@@ -33,11 +33,11 @@ Ext.define('progress.model.Abstract', function() {
                 me.save({
                     params : params || {},
                     scope : me,
-                    success : function(response) {
-                        resolve(response.responseText);
+                    success : function(record) {
+                        resolve(record);
                     },
-                    failure : function(response) {
-                        reject(response.status);
+                    failure : function(operation) {
+                        reject(operation);
                     }
                 });
             });
