@@ -72,7 +72,7 @@ Ext.define('progress.view.main.Main', {
                             xtype : 'datepickerfield',
                             dateFormat : 'd.m.Y',
                             disabled : true,
-                            width : 85,
+                            width : 70,
                             bind : {
                                 value : '{dayData.date}'
                             }
@@ -80,8 +80,11 @@ Ext.define('progress.view.main.Main', {
                         {
                             xtype : 'button',
                             iconCls : 'x-fa fa-long-arrow-right',
-                            handler : 'onShowNext'
-                            // todo block in future
+                            handler : 'onShowNext',
+                            hidden : true,
+                            bind : {
+                                hidden : '{isCurrentDay}'
+                            }
                         },
                         '->',
                         {
