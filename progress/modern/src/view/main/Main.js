@@ -29,6 +29,23 @@ Ext.define('progress.view.main.Main', {
             reference : 'dashboard',
             items : [
                 {
+                    xtype : 'toolbar',
+                    docked : 'top',
+                    items : [
+                        {
+                            bind : {
+                                html : 'Прогрессборд &bull; {user.name}'
+                            }
+                        },
+                        '->',
+                        {
+                            xtype : 'button',
+                            iconCls : 'x-fa fa-sign-out',
+                            handler : 'onLogout'
+                        }
+                    ]
+                },
+                {
                     xtype : 'container',
                     margin : '20',
                     html : '<object type="image/svg+xml" data="resources/images/progress.svg" width="90%" height="50%"></object>'

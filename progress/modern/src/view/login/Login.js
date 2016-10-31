@@ -14,6 +14,13 @@ Ext.define('progress.view.login.Login', {
         show : 'onShow'
     },
 
+    viewModel : {
+        data : {
+            username_val : '',
+            password_val : ''
+        }
+    },
+
     items : [
         {
             xtype : 'formpanel',
@@ -31,14 +38,17 @@ Ext.define('progress.view.login.Login', {
                     label : 'Пользователь',
                     required : true,
                     clearIcon : true,
-                    margin : '10 0 0 0'
+                    margin : '10 0 0 0',
+                    bind : '{username_val}'
                 },
                 {
                     xtype : 'passwordfield',
                     revealable : true,
+                    reference : 'password',
                     name : 'password',
                     label : 'Пароль',
-                    clearIcon : true
+                    clearIcon : true,
+                    bind : '{password_val}'
                 }
             ]
         },
@@ -59,7 +69,11 @@ Ext.define('progress.view.login.Login', {
                     xtype : 'button',
                     text : 'Войти',
                     ui : 'action',
-                    handler : 'onLoginClick'
+                    handler : 'onLoginClick',
+                    disabled : true,
+                    bind : {
+                        disabled : '{!username_val || !password_val}'
+                    }
                 }
             ]
         }

@@ -9,6 +9,13 @@
   .x-trigger {
     display: none !important;
   }
+
+  .x-button-label {
+    opacity: 0.5;
+  }
+  &.x-button {
+    opacity: 0.5;
+  }
 }
 
 .x-textfield.x-disabled .x-input-el {

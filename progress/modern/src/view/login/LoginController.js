@@ -27,7 +27,11 @@ Ext.define('progress.view.login.LoginController', {
     },
 
     onLoginFailure : function() {
-        // todo
+        Ext.toast('Ошибка авторизации!');
+        this.lookupReference('form').reset();
+        Ext.defer(function() {
+            this.lookup('username').focus();
+        }, 500, this);
     },
 
     onLoginSuccess : function(response) {

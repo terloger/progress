@@ -56,7 +56,7 @@ Ext.define('progress.view.main.MainController', {
             dayData.values_log().saveWithPromise(),
             dayData.nutrition_log().saveWithPromise()
         ]).then(function() {
-            Ext.toast('Данные сохранены.')
+            Ext.toast('Данные сохранены.');
         });
     },
 
@@ -76,6 +76,10 @@ Ext.define('progress.view.main.MainController', {
 
     onReloadCurrentDay : function() {
         this.loadDay(Ext.Date.format(new Date(), 'Y-m-d'))
+    },
+
+    onLogout : function() {
+        progress.Application.logout();
     }
 
 });
