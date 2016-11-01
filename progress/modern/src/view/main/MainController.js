@@ -48,7 +48,10 @@ Ext.define('progress.view.main.MainController', {
     },
 
     onSaveData : function() {
-        var dayData = this.getViewModel().get('dayData');
+        var me = this,
+            dayData = this.getViewModel().get('dayData');
+
+        me.setLoadingState(true);
 
         Ext.Promise.all([
             dayData.saveWithPromise(),
@@ -56,6 +59,7 @@ Ext.define('progress.view.main.MainController', {
             dayData.values_log().saveWithPromise(),
             dayData.nutrition_log().saveWithPromise()
         ]).then(function() {
+            me.setLoadingState(false);
             Ext.toast('Данные сохранены.');
         });
     },
