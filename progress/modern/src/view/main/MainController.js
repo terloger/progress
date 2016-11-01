@@ -40,7 +40,7 @@ Ext.define('progress.view.main.MainController', {
         if (loading) {
             Ext.Viewport.setMasked({
                 xtype : 'loadmask',
-                message : 'Загружаем данные...'
+                message : 'Загружаем данные'
             });
         } else {
             Ext.Viewport.setMasked(false);

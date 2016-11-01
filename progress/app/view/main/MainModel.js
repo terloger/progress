@@ -27,6 +27,15 @@ Ext.define('progress.view.main.MainModel', {
             date.setSeconds(0);
 
             return Ext.Date.diff(data('dayData.date'), date, 's') === 0;
+        },
+
+        isStartDay : function(data) {
+            var date = new Date('2016-09-21 00:00:00');
+            date.setHours(0);
+            date.setMinutes(0);
+            date.setSeconds(0);
+
+            return Ext.Date.diff(data('dayData.date'), date, 's') === 0;
         }
     }
 });
