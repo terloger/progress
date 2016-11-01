@@ -5,7 +5,13 @@ Ext.define('progress.view.main.Main', {
     requires : [
         'progress.view.main.MainController',
         'progress.view.main.MainModel',
-        'progress.view.data.Form'
+        'progress.view.data.Form',
+
+        'Ext.chart.CartesianChart',
+        'Ext.chart.series.Line',
+        'Ext.chart.axis.Numeric',
+        'Ext.draw.modifier.Highlight',
+        'Ext.chart.axis.Time'
     ],
 
     controller : {
@@ -27,6 +33,7 @@ Ext.define('progress.view.main.Main', {
             title : 'Показатели',
             iconCls : 'x-fa fa-tasks',
             reference : 'dashboard',
+            scrollable : true,
             items : [
                 {
                     xtype : 'toolbar',
@@ -45,6 +52,91 @@ Ext.define('progress.view.main.Main', {
                         }
                     ]
                 },
+
+                {
+                    xtype : 'cartesian',
+                    store : {
+                        type : 'progress_data_day_perm_values',
+                        autoLoad : true
+                    },
+
+                    height : 200,
+                    width : '100%',
+                    legend : {
+                        type : 'sprite',
+                        position : 'top',
+                        marker : {
+                            size : 5
+                        }
+                    },
+                    series : [
+                        {
+                            type : 'line',
+                            xField : 'date',
+                            yField : 'unit_1',
+                            fill : true,
+                            style : {
+                                smooth : true,
+                                miterLimit : 3,
+                                lineCap : 'miter',
+                                opacity : 0.7,
+                                lineWidth : 1
+                            },
+                            title : 'Уровень нагрузки',
+
+                            highlightCfg : {
+                                scale : 0.9
+                            }
+                        },
+                        {
+                            type : 'line',
+                            xField : 'date',
+                            yField : 'unit_2',
+                            style : {
+                                smooth : true,
+                                opacity : 0.7,
+                                lineWidth : 1
+                            },
+                            title : 'Работоспособность',
+
+                            highlightCfg : {
+                                scale : 0.9
+                            }
+                        },
+                        {
+                            type : 'line',
+                            xField : 'date',
+                            yField : 'unit_3',
+                            style : {
+                                smooth : true,
+                                opacity : 0.7,
+                                lineWidth : 1
+                            },
+                            title : 'Здоровье',
+
+                            highlightCfg : {
+                                scale : 0.9
+                            }
+                        }
+                    ],
+                    axes : [
+                        {
+                            type : 'numeric',
+                            position : 'left',
+                            fields : ['unit_1', 'unit_2', 'unit_3'],
+                            minimum : 0,
+                            maximum : 11
+                        },
+                        {
+                            type : 'time',
+                            dateFormat : 'd.m.Y',
+                            visibleRange : [0, 1],
+                            position : 'bottom',
+                            fields : 'date'
+                        }
+                    ]
+                },
+
                 {
                     xtype : 'container',
                     margin : '20',

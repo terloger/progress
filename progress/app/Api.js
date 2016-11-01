@@ -18,7 +18,10 @@ Ext.require(['progress.Consts'], function() {
         TYPE_LOAD : API_ROOT + '/type_load',
         UNITS : API_ROOT + '/units',
         VALUES_LOG : API_ROOT + '/values_log',
-        NUTRITION_LOG : API_ROOT + '/nutrition_log'
+        NUTRITION_LOG : API_ROOT + '/nutrition_log',
+
+        // graphs
+        PROGRESS_DATA_DAY_PERM_VALUES : API_ROOT + '/progress_data/dayPermValues'
     };
 
     /**

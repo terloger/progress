@@ -21,7 +21,8 @@ Ext.define('progress.Application', {
         'progress.store.TypeLoads',
         'progress.store.Units',
         'progress.store.ValuesLogs',
-        'progress.store.NutritionLogs'
+        'progress.store.NutritionLogs',
+        'progress.store.progressData.DayPermValues'
     ],
     
     launch: function () {
