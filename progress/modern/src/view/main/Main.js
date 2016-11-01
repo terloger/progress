@@ -158,7 +158,10 @@ Ext.define('progress.view.main.Main', {
                             xtype : 'button',
                             ui : 'round',
                             iconCls : 'x-fa fa-long-arrow-left',
-                            handler : 'onShowPrev'
+                            handler : 'onShowPrev',
+                            bind : {
+                                hidden : '{isStartDay}'
+                            }
                         },
                         {
                             xtype : 'datepickerfield',

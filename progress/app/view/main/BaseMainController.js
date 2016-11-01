@@ -51,12 +51,13 @@ Ext.define('progress.view.main.BaseMainController', {
     loadDay : function(dayVal) {
         var me = this,
             vm = this.getViewModel(),
-            day;
+            day,
+            dayVal = dayVal || Ext.Date.format(new Date(), 'Y-m-d');
 
         this.setLoadingState(true);
 
         day = new progress.model.Day({
-            id : dayVal || Ext.Date.format(new Date(), 'Y-m-d')
+            id : dayVal
         });
         day.getProxy().setUrl(progress.Api.API.DAYS_DAY);
         day.phantom = true;
@@ -70,7 +71,7 @@ Ext.define('progress.view.main.BaseMainController', {
             if (code === 404) {
                 // create new day record
                 var newDayRec = new progress.model.Day({
-                    date : new Date(),
+                    date : new Date(dayVal + ' 00:00:00'),
                     user_id : vm.get('user.id')
                 });
                 newDayRec.saveWithPromise().then(function() {
