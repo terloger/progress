@@ -10,6 +10,8 @@ Ext.define('progress.view.main.Main', {
         'Ext.chart.CartesianChart',
         'Ext.chart.series.Line',
         'Ext.chart.axis.Numeric',
+        'Ext.draw.modifier.Highlight',
+        'Ext.chart.interactions.ItemHighlight',
         'Ext.chart.axis.Time'
     ],
 
