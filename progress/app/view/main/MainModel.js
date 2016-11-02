@@ -16,6 +16,10 @@ Ext.define('progress.view.main.MainModel', {
         },
         sportNutritions : {
             type : 'sport_nutritions'
+        },
+
+        progressDataDayPermValues : {
+            type : 'progress_data_day_perm_values'
         }
     },
 

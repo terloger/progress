@@ -56,6 +56,7 @@ Ext.define('progress.view.main.BaseMainController', {
 
         this.setLoadingState(true);
 
+        this.loadProgressData();
         day = new progress.model.Day({
             id : dayVal
         });
@@ -82,6 +83,12 @@ Ext.define('progress.view.main.BaseMainController', {
                 });
             }
         });
+    },
+
+    loadProgressData : function() {
+        var vm = this.getViewModel();
+
+        vm.getStore('progressDataDayPermValues').load();
     },
 
     setLoadingState : function(loading) {

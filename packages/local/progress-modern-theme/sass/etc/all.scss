@@ -1,4 +1,6 @@
 .progress_modern_data_form {
+  opacity: 0.95;
+
   .x-form-fieldset-title {
     font-weight: bold !important;
     color: #64b5f6 !important;
@@ -20,4 +22,10 @@
 
 .x-textfield.x-disabled .x-input-el {
   color: rgba(0, 0, 0, 0.6) !important;
+}
+
+.progress-bg {
+  .x-body {
+    background: white url('images/progress.svg') no-repeat 95% 95%;
+  }
 }

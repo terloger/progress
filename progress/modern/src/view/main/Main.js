@@ -35,6 +35,7 @@ Ext.define('progress.view.main.Main', {
             iconCls : 'x-fa fa-tasks',
             reference : 'dashboard',
             scrollable : true,
+            cls : 'progress-bg',
             items : [
                 {
                     xtype : 'toolbar',
@@ -48,6 +49,11 @@ Ext.define('progress.view.main.Main', {
                         '->',
                         {
                             xtype : 'button',
+                            iconCls : 'x-fa fa-refresh',
+                            handler : 'onReloadCurrentDay'
+                        },
+                        {
+                            xtype : 'button',
                             iconCls : 'x-fa fa-sign-out',
                             handler : 'onLogout'
                         }
@@ -56,9 +62,8 @@ Ext.define('progress.view.main.Main', {
 
                 {
                     xtype : 'cartesian',
-                    store : {
-                        type : 'progress_data_day_perm_values',
-                        autoLoad : true
+                    bind : {
+                        store : '{progressDataDayPermValues}'
                     },
 
                     height : 200,
@@ -136,12 +141,6 @@ Ext.define('progress.view.main.Main', {
                             fields : 'date'
                         }
                     ]
-                },
-
-                {
-                    xtype : 'container',
-                    margin : '20',
-                    html : '<object type="image/svg+xml" data="resources/images/progress.svg" width="90%" height="50%"></object>'
                 }
             ]
         },
@@ -149,6 +148,7 @@ Ext.define('progress.view.main.Main', {
             title : 'Ввод данных',
             iconCls : 'x-fa fa-table',
             scrollable : true,
+            cls : 'progress-bg',
             items : [
                 {
                     docked : 'top',
