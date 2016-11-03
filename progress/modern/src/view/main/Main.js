@@ -66,9 +66,7 @@ Ext.define('progress.view.main.Main', {
                 },
                 {
                     xtype : 'progress_chart_cal_heat_map',
-                    height : 200,
-                    width : '100%',
-                    padding : 10
+                    width : '100%'
                 }
             ]
         },

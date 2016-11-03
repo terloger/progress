@@ -26,13 +26,13 @@ Ext.define('progress.view.chart.DayPermValues', {
             type : 'line',
             xField : 'date',
             yField : 'unit_1',
-            fill : true,
+            //fill : true,
             style : {
                 smooth : true,
                 miterLimit : 3,
                 lineCap : 'miter',
                 opacity : 0.7,
-                lineWidth : 1
+                lineWidth : 3
             },
             title : 'Уровень нагрузки',
 
@@ -47,7 +47,7 @@ Ext.define('progress.view.chart.DayPermValues', {
             style : {
                 smooth : true,
                 opacity : 0.7,
-                lineWidth : 1
+                lineWidth : 2
             },
             title : 'Работоспособность',
 
@@ -62,7 +62,7 @@ Ext.define('progress.view.chart.DayPermValues', {
             style : {
                 smooth : true,
                 opacity : 0.7,
-                lineWidth : 1
+                lineWidth : 2
             },
             title : 'Здоровье',
 

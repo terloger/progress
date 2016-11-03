@@ -216,6 +216,12 @@
      */
     "js": [
         {
+            "path": "libs/d3.v3.min.js"
+        },
+        {
+            "path": "libs/cal-heatmap.min.js"
+        },
+        {
             "path": "app.js",
             "bundle": true
         }
@@ -272,6 +278,9 @@
      *      }
      */
     "css": [
+        {
+            "path": "libs/cal-heatmap.css"
+        },
         {
             // this entry uses an ant variable that is the calculated
             // value of the generated output css file for the app,
