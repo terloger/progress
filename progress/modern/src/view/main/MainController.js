@@ -5,7 +5,8 @@ Ext.define('progress.view.main.MainController', {
     alias: 'controller.progress_modern_main',
 
     requires : [
-        'progress.view.login.Login'
+        'progress.view.login.Login',
+        'Ext.Toast'
     ],
 
     onAppNeedLogin : function() {
