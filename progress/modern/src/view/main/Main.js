@@ -66,6 +66,9 @@ Ext.define('progress.view.main.Main', {
                 },
                 {
                     xtype : 'progress_chart_cal_heat_map',
+                    bind : {
+                        store : '{progressDataDayPermValues}'
+                    },
                     width : '100%'
                 }
             ]

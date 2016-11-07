@@ -4,13 +4,54 @@ Ext.define('progress.view.chart.CalHeatMap', {
 
     alias : 'widget.progress_chart_cal_heat_map',
 
+    requires : [
+        'Ext.data.Store',
+        'Ext.data.StoreManager'
+    ],
+
+    config : {
+        /**
+         * @cfg {Ext.data.Store/Object/String} store
+         * Either a Store instance, configuration object or store ID.
+         * @accessor
+         */
+        store : null
+    },
+
     // при смене не забыть про формулу!
-    padding : '20 10',
+    padding : '20 20',
 
     constructor : function() {
         this.callParent(arguments);
 
         Ext.Viewport.on('resize', this.onResize, this);
+    },
+
+    applyStore : function(store) {
+        if (store) {
+            store = Ext.data.StoreManager.lookup(store);
+        }
+
+        return store;
+    },
+
+    updateStore : function(store, oldStore) {
+        if (oldStore && oldStore.getAutoDestroy()) {
+            oldStore.destroy();
+        }
+
+        if (store) {
+            store.on({
+                scope : this,
+                load : 'onStoreLoaded'
+            });
+        }
+    },
+
+    onStoreLoaded : function(store) {
+        Ext.defer(function() {
+            this.reCreateHeatMap();
+        }, 500, this);
     },
 
     onResize : Ext.Function.createBuffered(function(viewport, size) {
@@ -19,7 +60,12 @@ Ext.define('progress.view.chart.CalHeatMap', {
     }, 1000),
 
     reCreateHeatMap : function() {
-        var me = this;
+        var me = this,
+            store = this.getStore();
+
+        if (!store || !store.isLoaded()) {
+            return;
+        }
 
         if (this.cal) {
             this.cal.destroy(function() {
@@ -35,6 +81,10 @@ Ext.define('progress.view.chart.CalHeatMap', {
         this.cal.init({
             itemSelector : this.innerElement.dom,
             start : new Date(2016, 9, 21),
+            data : Ext.Array.map(this.getStore().getRange(), function(rec) {
+                return rec.getData();
+            }),
+            afterLoadData : this.parseData,
             domain : "month",
             subDomain : "day",
             cellSize : 10,
@@ -44,10 +94,20 @@ Ext.define('progress.view.chart.CalHeatMap', {
             legend : [2, 4, 6, 8, 10],
             legendColors : {
                 empty : "#ededed",
-                min : "#fde8ca",
-                max : "#000000"
+                min : "#90caf9",
+                max : "#c62828"
             }
         });
+    },
+
+    parseData : function(data) {
+        var stats = {};
+
+        for (var d in data) {
+            stats[data[d].id] = data[d].unit_1;
+        }
+
+        return stats;
     }
 
 });

@@ -28,6 +28,7 @@ Ext.require(['progress.Consts'], function() {
      * @singleton
      */
     Ext.define('progress.Api', function() {
+        var responseTextO;
 
         /**
          * Failure handler.
@@ -42,6 +43,11 @@ Ext.require(['progress.Consts'], function() {
                 case 400:
                 case 406:
                 case 500:
+                    responseTextO = Ext.decode(response.responseText);
+                    if (responseTextO && responseTextO.message === 'Expired token') {
+                        // logout
+                        progress.Application.logout();
+                    }
                     //showServerError(response, opts);
                     break;
             }
