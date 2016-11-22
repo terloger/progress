@@ -19,7 +19,11 @@ Ext.define('progress.view.main.MainModel', {
         },
 
         progressDataDayPermValues : {
-            type : 'progress_data_day_perm_values'
+            type : 'progress_data_day_perm_values',
+            sorters : {
+                property : 'date',
+                direction : 'ASC'
+            }
         }
     },
 
