@@ -95,9 +95,10 @@ Ext.define('progress.view.main.Main', {
                         },
                         {
                             xtype : 'datepickerfield',
-                            dateFormat : 'd.m.Y',
+                            cls : 'pickerWithoutBorder',
+                            dateFormat : 'd.m.Y (l)',
                             disabled : true,
-                            width : 70,
+                            width : 170,
                             bind : {
                                 value : '{dayData.date}'
                             }

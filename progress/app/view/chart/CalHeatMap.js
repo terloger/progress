@@ -93,7 +93,7 @@ Ext.define('progress.view.chart.CalHeatMap', {
             highlight : ["now"],
             legend : [2, 4, 6, 8, 10],
             legendColors : {
-                empty : "#ededed",
+                empty : "#90caf9",
                 min : "#90caf9",
                 max : "#c62828"
             }

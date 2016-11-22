@@ -8,6 +8,7 @@ Ext.define('progress.Application', {
     ],
 
     requires : [
+        'progress.Localization',
         'progress.Consts',
         'progress.Utils',
         'progress.Api'

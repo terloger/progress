@@ -7,7 +7,7 @@
     /**
      * The version of the application.
      */
-    "version": "1.0.0.0",
+    "version": "1.0.2.0",
 
     /**
      * The relative path to the application's markup file (html, jsp, asp, etc.).
@@ -42,9 +42,6 @@
      */
     "framework": "ext",
     
-    
-    
-    
     /**
      * The list of required packages (with optional versions; default is "latest").
      *
@@ -56,8 +53,11 @@
      */
     "requires": [
         "font-awesome",
-        "charts"
+        "charts",
+        "ext-locale"
     ],
+
+    "locale": "ru",
 
     /**
      * Fashion build configuration properties.

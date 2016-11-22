@@ -33,3 +33,9 @@
     opacity: 0.95;
   }
 }
+
+.pickerWithoutBorder {
+  .x-input {
+    border-width: 0 !important;
+  }
+}
