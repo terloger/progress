@@ -11,11 +11,16 @@ Ext.define('progress.view.main.BaseMainController', {
     listen : {
         global : {
             appNeedLogin : 'onAppNeedLogin',
-            setUser : 'onSetUser'
+            setUser : 'onSetUser',
+            gotoDate : 'onGotoDate'
         }
     },
 
     onAppNeedLogin : function() {
+        // in child
+    },
+
+    onGotoDate : function() {
         // in child
     },
 

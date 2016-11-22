@@ -85,6 +85,11 @@ Ext.define('progress.view.main.MainController', {
 
     onLogout : function() {
         progress.Application.logout();
+    },
+
+    onGotoDate : function(date) {
+        this.getView().setActiveItem(1);
+        this.loadDay(Ext.Date.format(date, 'Y-m-d'))
     }
 
 });

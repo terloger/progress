@@ -55,7 +55,7 @@ Ext.define('progress.view.chart.CalHeatMap', {
     },
 
     onResize : Ext.Function.createBuffered(function(viewport, size) {
-        this.range = Math.round((size.contentWidth - 40) / 70);
+        this.range = Math.round((size.contentWidth - 40) / 130);
         this.reCreateHeatMap();
     }, 1000),
 
@@ -87,8 +87,9 @@ Ext.define('progress.view.chart.CalHeatMap', {
             afterLoadData : this.parseData,
             domain : "month",
             subDomain : "day",
-            cellSize : 10,
+            cellSize : 20,
             domainLabelFormat : "%m.%Y",
+            subDomainTextFormat : "%d",
             range : this.range,
             highlight : ["now"],
             legend : [2, 4, 6, 8, 10],
@@ -96,6 +97,9 @@ Ext.define('progress.view.chart.CalHeatMap', {
                 empty : "#90caf9",
                 min : "#90caf9",
                 max : "#c62828"
+            },
+            onClick : function(date) {
+                Ext.GlobalEvents.fireEvent('gotoDate', date);
             }
         });
     },
