@@ -50,19 +50,52 @@ Ext.define('progress.view.main.MainController', {
 
     onSaveData : function() {
         var me = this,
-            dayData = this.getViewModel().get('dayData');
-
-        me.setLoadingState(true);
+            dayData = this.getViewModel().get('dayData'),
+            loads = dayData.loads(),
+            valuesLog = dayData.values_log(),
+            nutritionLog = dayData.nutrition_log();
 
         Ext.Promise.all([
-            dayData.saveWithPromise(),
-            dayData.loads().saveWithPromise(),
-            dayData.values_log().saveWithPromise(),
-            dayData.nutrition_log().saveWithPromise()
+            this._checkValidState(loads),
+            this._checkValidState(valuesLog),
+            this._checkValidState(nutritionLog)
         ]).then(function() {
-            me.setLoadingState(false);
-            Ext.toast('Данные сохранены.');
+            me.setLoadingState(true);
+
+            Ext.Promise.all([
+                dayData.saveWithPromise(),
+                loads.saveWithPromise(),
+                valuesLog.saveWithPromise(),
+                nutritionLog.saveWithPromise()
+            ]).then(function() {
+                me.setLoadingState(false);
+                Ext.toast('Данные сохранены.');
+            });
+        }, function() {
+            Ext.toast('Ошибки в заполнении данных, проверьте все поля!');
         });
+    },
+
+    _checkValidState : function(store) {
+        var deferred = new Ext.promise.Deferred(),
+            hasErrorValue = false;
+
+        //action(deferred.resolve.bind(deferred), deferred.reject.bind(deferred));
+        store.each(function(rec) {
+            var val = rec.get('value');
+
+            if (val === null || val === '') {
+                hasErrorValue = true;
+            }
+        });
+
+        if (hasErrorValue) {
+            deferred.reject('Ошибка в заполнении');
+        } else {
+            deferred.resolve();
+        }
+
+        return deferred.promise;
     },
 
     onShowPrev : function() {
