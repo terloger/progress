@@ -56,9 +56,9 @@ Ext.define('progress.view.main.MainController', {
             nutritionLog = dayData.nutrition_log();
 
         Ext.Promise.all([
-            this._checkValidState(loads),
-            this._checkValidState(valuesLog),
-            this._checkValidState(nutritionLog)
+            //this._checkValidState(loads),
+            this._checkValidState(valuesLog)
+            //this._checkValidState(nutritionLog)
         ]).then(function() {
             me.setLoadingState(true);
 
@@ -80,7 +80,6 @@ Ext.define('progress.view.main.MainController', {
         var deferred = new Ext.promise.Deferred(),
             hasErrorValue = false;
 
-        //action(deferred.resolve.bind(deferred), deferred.reject.bind(deferred));
         store.each(function(rec) {
             var val = rec.get('value');
 
