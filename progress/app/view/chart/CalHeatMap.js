@@ -21,6 +21,8 @@ Ext.define('progress.view.chart.CalHeatMap', {
     // при смене не забыть про формулу!
     padding : '20 20',
 
+    height : 250,
+
     constructor : function() {
         this.callParent(arguments);
 
