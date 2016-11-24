@@ -94,6 +94,7 @@ Ext.define('progress.view.main.BaseMainController', {
         var vm = this.getViewModel();
 
         vm.getStore('progressDataDayPermValues').load();
+        Ext.GlobalEvents.fireEvent('loadProgressData');
     },
 
     setLoadingState : function(loading) {

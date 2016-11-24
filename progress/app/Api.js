@@ -21,7 +21,9 @@ Ext.require(['progress.Consts'], function() {
         NUTRITION_LOG : API_ROOT + '/nutrition_log',
 
         // graphs
-        PROGRESS_DATA_DAY_PERM_VALUES : API_ROOT + '/progress_data/dayPermValues'
+
+        PROGRESS_DATA_DAY_PERM_VALUES : API_ROOT + '/progress_data/dayPermValues',
+        PROGRESS_DATA_DAY_VALUES : API_ROOT + '/progress_data/valuesLogHistory'
     };
 
     /**

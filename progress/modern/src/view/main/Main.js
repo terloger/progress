@@ -8,7 +8,8 @@ Ext.define('progress.view.main.Main', {
         'progress.view.data.Form',
 
         'progress.view.chart.DayPermValues',
-        'progress.view.chart.CalHeatMap'
+        'progress.view.chart.CalHeatMap',
+        'progress.view.chart.Values'
     ],
 
     controller : {
@@ -69,6 +70,16 @@ Ext.define('progress.view.main.Main', {
                     bind : {
                         store : '{progressDataDayPermValues}'
                     },
+                    width : '100%'
+                },
+                {
+                    xtype : 'progress_chart_values',
+                    minimum : 30,
+                    units : {
+                        16 : 'Динамометрия хвата. Правая рука',
+                        17 : 'Динамометрия хвата. Левая рука'
+                    },
+                    height : 200,
                     width : '100%'
                 }
             ]
