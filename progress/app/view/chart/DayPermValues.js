@@ -26,7 +26,6 @@ Ext.define('progress.view.chart.DayPermValues', {
             type : 'line',
             xField : 'date',
             yField : 'unit_1',
-            //fill : true,
             style : {
                 smooth : true,
                 miterLimit : 3,
