@@ -15,7 +15,7 @@ Ext.define('progress.view.chart.Values', {
     legend : {
         type : 'sprite',
         position : 'top',
-        padding : 5,
+        padding : 3,
         marker : {
             size : 5
         }
@@ -39,7 +39,13 @@ Ext.define('progress.view.chart.Values', {
                     opacity : 0.7,
                     lineWidth : 1
                 },
-                title : value
+                title : value,
+
+                marker : {
+                    type : 'circle',
+                    fillStyle : 'blue',
+                    radius : 2
+                }
             });
 
             fields.push('unit_' + key);
