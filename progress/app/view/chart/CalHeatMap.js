@@ -50,7 +50,7 @@ Ext.define('progress.view.chart.CalHeatMap', {
         }
     },
 
-    onStoreLoaded : function(store) {
+    onStoreLoaded : function() {
         Ext.defer(function() {
             this.reCreateHeatMap();
         }, 500, this);
@@ -61,7 +61,7 @@ Ext.define('progress.view.chart.CalHeatMap', {
         this.reCreateHeatMap();
     }, 1000),
 
-    reCreateHeatMap : function() {
+    reCreateHeatMap : Ext.Function.createBuffered(function() {
         var me = this,
             store = this.getStore();
 
@@ -76,7 +76,7 @@ Ext.define('progress.view.chart.CalHeatMap', {
         } else {
             me.createHeatMap();
         }
-    },
+    }, 500),
 
     createHeatMap : function() {
         this.cal = new CalHeatMap();

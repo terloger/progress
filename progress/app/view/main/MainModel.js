@@ -24,6 +24,30 @@ Ext.define('progress.view.main.MainModel', {
                 property : 'date',
                 direction : 'ASC'
             }
+        },
+
+        mainLoadValues : {
+            fields : [
+                {
+                    name : 'date',
+                    type : 'date',
+                    dateFormat : 'Y-m-d'
+                },
+                {
+                    name : 'unit_1',
+                    type : 'integer'
+                }
+            ],
+
+            proxy : {
+                type : 'progress_rest',
+                url : progress.Api.API.PROGRESS_DATA_DAY_VALUES,
+
+                extraParams : {
+                    units : '1',
+                    limit : 300
+                }
+            }
         }
     },
 

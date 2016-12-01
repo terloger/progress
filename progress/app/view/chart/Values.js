@@ -9,7 +9,8 @@ Ext.define('progress.view.chart.Values', {
         'Ext.chart.axis.Numeric',
         'Ext.draw.modifier.Highlight',
         'Ext.chart.interactions.ItemHighlight',
-        'Ext.chart.axis.Time'
+        'Ext.chart.axis.Time',
+        'Ext.chart.theme.Red'
     ],
 
     legend : {
@@ -20,6 +21,8 @@ Ext.define('progress.view.chart.Values', {
             size : 5
         }
     },
+
+    theme : 'red',
 
     constructor : function(config) {
         var me = this,
@@ -44,7 +47,7 @@ Ext.define('progress.view.chart.Values', {
                 marker : {
                     type : 'circle',
                     fillStyle : 'blue',
-                    radius : 2
+                    radius : 1
                 }
             });
 
