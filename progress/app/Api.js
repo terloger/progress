@@ -1,6 +1,6 @@
 Ext.require(['progress.Consts'], function() {
 
-    var API_ROOT = '/api',
+    var API_ROOT = '/api', // http://progress.ter.st
         HEADER = {
             AUTHORIZATION : 'Authorization'
         },
@@ -98,6 +98,8 @@ Ext.require(['progress.Consts'], function() {
 
                 data = Ext.apply({}, {
                     timeout : (5 * 60) * 1000, // 5 minutes
+                    cors : true,
+                    useDefaultXhrHeader : false,
                     scope : this,
                     success : function(response) {
                         success.call(me, response, opts);

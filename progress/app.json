@@ -559,6 +559,27 @@
                     "src": "modern/sass/save"
                 }
             }
+        },
+
+        "android" : {
+            "toolkit": "modern",
+
+            "theme": "progress-modern-theme",
+            "sass": {
+                "generated": {
+                    "var": "modern/sass/save.scss",
+                    "src": "modern/sass/save"
+                }
+            },
+
+            "packager": "phonegap",
+            "phonegap": {
+                "config": {
+                    "platform": "android",
+                    "remote": true,
+                    "id": "com.ter.st.Progress"
+                }
+            }
         }
     },
     
