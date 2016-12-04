@@ -13,14 +13,14 @@ Ext.define('progress.view.chart.Values', {
         'Ext.chart.theme.Red'
     ],
 
-    legend : {
-        type : 'sprite',
-        position : 'top',
-        padding : 3,
-        marker : {
-            size : 5
-        }
-    },
+    // legend : {
+    //     type : 'sprite',
+    //     position : 'top',
+    //     padding : 3,
+    //     marker : {
+    //         size : 5
+    //     }
+    // },
 
     theme : 'red',
 

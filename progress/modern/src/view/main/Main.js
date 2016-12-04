@@ -32,7 +32,6 @@ Ext.define('progress.view.main.Main', {
             iconCls : 'x-fa fa-tasks',
             reference : 'dashboard',
             scrollable : true,
-            cls : 'progress-bg',
             items : [
                 {
                     xtype : 'toolbar',
@@ -66,6 +65,13 @@ Ext.define('progress.view.main.Main', {
                     width : '100%'
                 },
                 {
+                    xtype : 'component',
+                    cls : 'legend_block',
+                    html : '<p><span class="legend_mark green">&bull;</span>&nbsp;Уровень нагрузки</p>' +
+                    '<p><span class="legend_mark dblue">&bull;</span>&nbsp;Работоспособность</p>' +
+                    '<p><span class="legend_mark dred">&bull;</span>&nbsp;Здоровье</p>'
+                },
+                {
                     xtype : 'progress_chart_cal_heat_map',
                     bind : {
                         store : '{mainLoadValues}'
@@ -74,19 +80,26 @@ Ext.define('progress.view.main.Main', {
                 },
                 {
                     xtype : 'progress_chart_values',
-                    minimum : 30,
+                    minimum : 35,
                     units : {
                         16 : 'Динамометрия хвата. Правая рука',
                         17 : 'Динамометрия хвата. Левая рука'
                     },
-                    height : 200,
+                    height : 150,
                     width : '100%'
+                },
+                {
+                    xtype : 'component',
+                    cls : 'legend_block',
+                    margin : '0 0 0 10',
+                    html : 'Динамометрия хвата: <p><span class="legend_mark phand">&bull;</span>&nbsp;Правая рука</p>' +
+                    '<p><span class="legend_mark lhand">&bull;</span>&nbsp;Левая рука</p>'
                 }
             ]
         },
         {
             title : 'Ввод данных',
-            iconCls : 'x-fa fa-table',
+            iconCls : 'x-fa fa-edit',
             scrollable : true,
             cls : 'progress-bg',
             items : [
@@ -143,8 +156,8 @@ Ext.define('progress.view.main.Main', {
             ]
         },
         {
-            title : 'Настройки',
-            iconCls : 'x-fa fa-cog'
+            title : 'Лог',
+            iconCls : 'x-fa fa-table'
         }
     ]
 });

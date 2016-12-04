@@ -89,7 +89,7 @@ Ext.define('progress.view.chart.CalHeatMap', {
             afterLoadData : this.parseData,
             domain : "month",
             subDomain : "day",
-            cellSize : 20,
+            cellSize : 19,
             domainLabelFormat : "%m.%Y",
             subDomainTextFormat : "%d",
             range : this.range,

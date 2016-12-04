@@ -12,14 +12,14 @@ Ext.define('progress.view.chart.DayPermValues', {
         'Ext.chart.axis.Time'
     ],
 
-    legend : {
-        type : 'sprite',
-        position : 'top',
-        padding : 5,
-        marker : {
-            size : 5
-        }
-    },
+    // legend : {
+    //     type : 'sprite',
+    //     position : 'top',
+    //     padding : 5,
+    //     marker : {
+    //         size : 5
+    //     }
+    // },
 
     series : [
         {

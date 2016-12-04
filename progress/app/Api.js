@@ -94,8 +94,6 @@ Ext.require(['progress.Consts'], function() {
                     me = this,
                     request;
 
-                // todo check progress.TOKEN
-
                 data = Ext.apply({}, {
                     timeout : (5 * 60) * 1000, // 5 minutes
                     cors : true,

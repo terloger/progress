@@ -12,20 +12,14 @@
     <link rel="stylesheet" href="libs/cal-heatmap.css"/>
 
     <script type="text/javascript">
-        var Ext = Ext || {}; // Ext namespace won't be defined yet...
+        var Ext = Ext || {},
+            doc = document,
+            head = doc.getElementsByTagName('head')[0];
 
-        // This function is called by the Microloader after it has performed basic
-        // device detection. The results are provided in the "tags" object. You can
-        // use these tags here or even add custom tags. These can be used by platform
-        // filters in your manifest or by platformConfig expressions in your app.
-        //
         Ext.beforeLoad = function (tags) {
-            var s = location.search,  // the query string (ex "?foo=1&bar")
+            var s = location.search,
                 profile;
 
-            // For testing look for "?classic" or "?modern" in the URL to override
-            // device detection default.
-            //
             if (s.match(/\bclassic\b/)) {
                 profile = 'classic';
             }
@@ -34,18 +28,21 @@
             }
             else {
                 profile = tags.desktop ? 'classic' : 'modern';
-                //profile = tags.phone ? 'modern' : 'classic';
             }
 
-            Ext.manifest = profile; // this name must match a build profile name
-
-            // This function is called once the manifest is available but before
-            // any data is pulled from it.
-            //
-            //return function (manifest) {
-                // peek at / modify the manifest object
-            //};
+            Ext.manifest = profile;
         };
+
+        if (window.location.href === 'file:///android_asset/www/index.html') {
+            var base = doc.createElement('base');
+            base.href = 'http://progress.ter.st/';
+
+            if (head.firstChild) {
+                head.insertBefore(base, head.firstChild);
+            } else {
+                head.appendChild(base);
+            }
+        }
     </script>
     
     

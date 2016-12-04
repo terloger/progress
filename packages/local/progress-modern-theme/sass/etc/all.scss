@@ -39,3 +39,36 @@
     border-width: 0 !important;
   }
 }
+
+.green {
+  color: #A5AD79;
+}
+
+.dblue {
+  color: #5C7A96
+}
+
+.dred {
+  color: #9B6469;
+}
+
+.legend_block {
+  p {
+    display: inline;
+    margin: 0 0 0 10px;
+  }
+
+  .legend_mark {
+    font-weight: bold;
+    font-size: 21px;
+    vertical-align: sub;
+
+    &.phand {
+      color: #845C63;
+    }
+
+    &.lhand {
+      color: #836675;
+    }
+  }
+}
