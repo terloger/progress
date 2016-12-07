@@ -161,25 +161,16 @@ Ext.define('progress.view.main.Main', {
             title : 'Лог',
             iconCls : 'x-fa fa-table',
             scrollable : true,
+            layout : {
+                type : 'vbox'
+            },
             items : [
-                {
-                    docked : 'top',
-                    ui : 'light',
-                    xtype : 'toolbar',
-                    items : [
-                        '->',
-                        {
-                            xtype : 'button',
-                            iconCls : 'x-fa fa-refresh'
-                        }
-                    ]
-                },
                 {
                     xtype : 'progress_modern_data_log_grid',
                     bind : {
-                        store : '{progressDataDayPermValues}'
+                        store : '{valueLog}'
                     },
-                    height : '100%'
+                    flex : 1
                 }
             ]
         }

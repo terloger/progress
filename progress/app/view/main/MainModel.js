@@ -48,6 +48,29 @@ Ext.define('progress.view.main.MainModel', {
                     limit : 300
                 }
             }
+        },
+
+        valueLog : {
+            fields : [
+                {
+                    name : 'date',
+                    type : 'date',
+                    dateFormat : 'Y-m-d'
+                },
+                {
+                    name : 'value'
+                }
+            ],
+
+            proxy : {
+                type : 'progress_rest',
+                url : progress.Api.API.PROGRESS_DATA_DAY_VALUES,
+
+                extraParams : {
+                    names : 'value',
+                    limit : 300
+                }
+            }
         }
     },
 
