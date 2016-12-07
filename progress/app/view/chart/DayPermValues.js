@@ -47,7 +47,7 @@ Ext.define('progress.view.chart.DayPermValues', {
             style : {
                 smooth : true,
                 opacity : 0.7,
-                lineWidth : 2
+                lineWidth : 3
             },
             title : 'Работоспособность',
 

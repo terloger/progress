@@ -6,6 +6,7 @@ Ext.define('progress.view.main.Main', {
         'progress.view.main.MainController',
         'progress.view.main.MainModel',
         'progress.view.data.Form',
+        'progress.view.data.LogGrid',
 
         'progress.view.chart.DayPermValues',
         'progress.view.chart.CalHeatMap',
@@ -38,6 +39,11 @@ Ext.define('progress.view.main.Main', {
                     docked : 'top',
                     items : [
                         {
+                            xtype : 'button',
+                            iconCls : 'x-fa fa-sign-out',
+                            handler : 'onLogout'
+                        },
+                        {
                             bind : {
                                 html : 'Прогрессборд &bull; {user.name}'
                             }
@@ -47,11 +53,6 @@ Ext.define('progress.view.main.Main', {
                             xtype : 'button',
                             iconCls : 'x-fa fa-refresh',
                             handler : 'onReloadCurrentDay'
-                        },
-                        {
-                            xtype : 'button',
-                            iconCls : 'x-fa fa-sign-out',
-                            handler : 'onLogout'
                         }
                     ]
                 },
@@ -140,7 +141,8 @@ Ext.define('progress.view.main.Main', {
                         {
                             xtype : 'button',
                             iconCls : 'x-fa fa-refresh',
-                            handler : 'onReloadCurrentDay'
+                            handler : 'onReloadCurrentDay',
+                            margin : '0 10 0 0'
                         },
                         {
                             xtype : 'button',
@@ -157,7 +159,29 @@ Ext.define('progress.view.main.Main', {
         },
         {
             title : 'Лог',
-            iconCls : 'x-fa fa-table'
+            iconCls : 'x-fa fa-table',
+            scrollable : true,
+            items : [
+                {
+                    docked : 'top',
+                    ui : 'light',
+                    xtype : 'toolbar',
+                    items : [
+                        '->',
+                        {
+                            xtype : 'button',
+                            iconCls : 'x-fa fa-refresh'
+                        }
+                    ]
+                },
+                {
+                    xtype : 'progress_modern_data_log_grid',
+                    bind : {
+                        store : '{progressDataDayPermValues}'
+                    },
+                    height : '100%'
+                }
+            ]
         }
     ]
 });

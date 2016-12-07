@@ -79,10 +79,17 @@ Ext.define('progress.view.chart.CalHeatMap', {
     }, 500),
 
     createHeatMap : function() {
+        var startDate,
+            currentDate = new Date(),
+            projectStart = new Date(2016, 9, 21);
+
+        startDate = Ext.Date.add(currentDate, Ext.Date.MONTH, -(this.range - 1));
+        //startDate = startDate < projectStart ? projectStart : startDate;
+
         this.cal = new CalHeatMap();
         this.cal.init({
             itemSelector : this.innerElement.dom,
-            start : new Date(2016, 9, 21),
+            start : startDate,
             data : Ext.Array.map(this.getStore().getRange(), function(rec) {
                 return rec.getData();
             }),

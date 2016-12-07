@@ -5,6 +5,14 @@
     font-weight: bold !important;
     color: #64b5f6 !important;
   }
+
+  .x-inner {
+    background-color: white;
+  }
+}
+
+.x-body {
+  background-color: white;
 }
 
 .x-disabled {
@@ -17,6 +25,16 @@
   }
   &.x-button {
     opacity: 0.5;
+  }
+}
+
+.x-tabbar {
+  &.x-docked-bottom {
+    box-shadow: -2px -2px 5px 0 rgba(0, 0, 0, 0.12), 2px 2px 5px 0 rgba(0, 0, 0, 0.08);
+
+    .x-font-icon, .x-button-label {
+      text-shadow: 1px 1px darken($base-color, 10%);
+    }
   }
 }
 
