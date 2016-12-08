@@ -4,6 +4,10 @@ Ext.define('progress.view.data.ItemsContainerController', {
 
     alias : 'controller.progress_modern_data_items_container',
 
+    onClickAddValue : function() {
+        this.lookup('valueSelector').showPicker();
+    },
+
     onAddValue : function() {
         var valueSelector = this.lookup('valueSelector'),
             valR = valueSelector.getSelection();

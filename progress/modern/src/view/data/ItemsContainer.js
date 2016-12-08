@@ -4,6 +4,8 @@ Ext.define('progress.view.data.ItemsContainer', {
 
     alias : 'widget.progress_modern_data_items_container',
 
+    cls : 'data-items-container',
+
     requires : [
         'Ext.data.StoreManager',
         'progress.view.data.ItemsContainerController',
@@ -141,20 +143,32 @@ Ext.define('progress.view.data.ItemsContainer', {
         this.add({
             xtype : 'container',
             layout : 'hbox',
+            margin : '10 0',
             items : [
                 {
                     xtype : 'selectfield',
+                    cls : 'h-selectfield',
                     label : this.getValueName(),
                     store : selectorStore,
+                    usePicker : false,
+                    defaultTabletPickerConfig : {
+                        width : '25em'
+                    },
                     autoSelect : false,
                     valueField : 'id',
                     displayField : 'name',
                     reference : 'valueSelector',
-                    labelAlign : 'placeholder',
-                    flex : 1,
                     listeners : {
                         change : 'onValueSelectorChange'
-                    }
+                    },
+                    width : 1
+                },
+                {
+                    xtype : 'button',
+                    cls : 'button-orange',
+                    text : this.getValueName(),
+                    iconCls : 'x-fa fa-plus-circle',
+                    handler : 'onClickAddValue'
                 }
             ],
             margin : '0 0 10 0'

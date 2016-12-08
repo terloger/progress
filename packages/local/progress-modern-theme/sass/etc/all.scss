@@ -15,6 +15,12 @@
   background-color: white;
 }
 
+.h-selectfield {
+  width: 1px !important;
+  height: 1px !important;
+  opacity: 0 !important;
+}
+
 .x-disabled {
   .x-trigger {
     display: none !important;
@@ -87,6 +93,27 @@
 
     &.lhand {
       color: #836675;
+    }
+  }
+}
+
+.x-textfield .x-input {
+  border-color: rgba(0, 83, 214, 0.05) !important;
+}
+
+.button-orange {
+  color: #ff9800 !important;
+  text-shadow: 1px 1px rgba(0, 79, 204, 0.07);
+
+  .x-button-icon {
+    color: #ff9800 !important;
+  }
+}
+
+.data-items-container {
+  .x-form-fieldset-title {
+    .x-innerhtml {
+      border-bottom: 1px dotted rgba(0, 0, 0, 0.29);
     }
   }
 }
