@@ -72,13 +72,41 @@ Ext.define('progress.view.main.Main', {
                     '<p><span class="legend_mark dblue">&bull;</span>&nbsp;Работоспособность</p>' +
                     '<p><span class="legend_mark dred">&bull;</span>&nbsp;Здоровье</p>'
                 },
+
                 {
                     xtype : 'progress_chart_cal_heat_map',
                     bind : {
                         store : '{mainLoadValues}'
                     },
+                    unitName : 'unit_1',
+                    heatMapCfg : {
+                        legend : [2, 4, 6, 8, 10],
+                        legendColors : {
+                            empty : "#90caf9",
+                            min : "#90caf9",
+                            max : "#c62828"
+                        }
+                    },
                     width : '100%'
                 },
+
+                {
+                    xtype : 'progress_chart_cal_heat_map',
+                    bind : {
+                        store : '{mainLoadValues}'
+                    },
+                    unitName : 'unit_2',
+                    heatMapCfg : {
+                        legend : [2, 4, 6, 8, 10],
+                        legendColors : {
+                            empty : "#cccccc",
+                            min : "#eeeeee",
+                            max : "#121b40"
+                        }
+                    },
+                    width : '100%'
+                },
+
                 {
                     xtype : 'progress_chart_values',
                     minimum : 35,
@@ -92,9 +120,58 @@ Ext.define('progress.view.main.Main', {
                 {
                     xtype : 'component',
                     cls : 'legend_block',
-                    margin : '0 0 0 10',
+                    padding : '0 0 0 10',
                     html : 'Динамометрия хвата: <p><span class="legend_mark phand">&bull;</span>&nbsp;Правая рука</p>' +
-                    '<p><span class="legend_mark lhand">&bull;</span>&nbsp;Левая рука</p>'
+                    '<p><span class="legend_mark lhand">&bull;</span>&nbsp;Левая рука</p>' ,
+                    style : {
+                        borderBottom : '1px solid #CCC'
+                    },
+                    margin : '0 0 10 0'
+                },
+
+                {
+                    xtype : 'progress_chart_values',
+                    minimum : 35,
+                    units : {
+                        10 : 'Пресс (прямые скручивания)'
+                    },
+                    height : 150,
+                    width : '100%'
+                },
+                {
+                    xtype : 'component',
+                    cls : 'legend_block',
+                    padding : '0 0 0 10',
+                    html : '<p><span class="legend_mark">&bull;</span>&nbsp;Пресс (прямые скручивания)</p>',
+                    style : {
+                        borderBottom : '1px solid #CCC'
+                    },
+                    margin : '0 0 10 0'
+                },
+
+                {
+                    xtype : 'progress_chart_values',
+                    minimum : 35,
+                    units : {
+                        13 : 'Отжимания'
+                    },
+                    height : 150,
+                    width : '100%'
+                },
+                {
+                    xtype : 'component',
+                    cls : 'legend_block',
+                    padding : '0 0 0 10',
+                    html : '<p><span class="legend_mark">&bull;</span>&nbsp;Отжимания</p>',
+                    style : {
+                        borderBottom : '1px solid #CCC'
+                    },
+                    margin : '0 0 10 0'
+                },
+
+                {
+                    xtype : 'component',
+                    margin : '0 0 30 0'
                 }
             ]
         },

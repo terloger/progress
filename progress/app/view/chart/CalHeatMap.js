@@ -15,7 +15,18 @@ Ext.define('progress.view.chart.CalHeatMap', {
          * Either a Store instance, configuration object or store ID.
          * @accessor
          */
-        store : null
+        store : null,
+
+        unitName : '',
+
+        heatMapCfg : {
+            legend : [2, 4, 6, 8, 10],
+            legendColors : {
+                empty : "#90caf9",
+                min : "#90caf9",
+                max : "#c62828"
+            }
+        }
     },
 
     // при смене не забыть про формулу!
@@ -24,6 +35,9 @@ Ext.define('progress.view.chart.CalHeatMap', {
     height : 250,
 
     constructor : function() {
+        this.onResize = Ext.Function.createBuffered(this.onResize, 1000, this);
+        this.reCreateHeatMap = Ext.Function.createBuffered(this.reCreateHeatMap, 500, this),
+
         this.callParent(arguments);
 
         Ext.Viewport.on('resize', this.onResize, this);
@@ -56,12 +70,12 @@ Ext.define('progress.view.chart.CalHeatMap', {
         }, 500, this);
     },
 
-    onResize : Ext.Function.createBuffered(function(viewport, size) {
+    onResize : function(viewport, size) {
         this.range = Math.round((size.contentWidth - 40) / 130);
         this.reCreateHeatMap();
-    }, 1000),
+    },
 
-    reCreateHeatMap : Ext.Function.createBuffered(function() {
+    reCreateHeatMap : function() {
         var me = this,
             store = this.getStore();
 
@@ -76,24 +90,22 @@ Ext.define('progress.view.chart.CalHeatMap', {
         } else {
             me.createHeatMap();
         }
-    }, 500),
+    },
 
     createHeatMap : function() {
         var startDate,
-            currentDate = new Date(),
-            projectStart = new Date(2016, 9, 21);
+            currentDate = new Date();
 
         startDate = Ext.Date.add(currentDate, Ext.Date.MONTH, -(this.range - 1));
-        //startDate = startDate < projectStart ? projectStart : startDate;
 
         this.cal = new CalHeatMap();
-        this.cal.init({
+        this.cal.init(Ext.Object.merge({
             itemSelector : this.innerElement.dom,
             start : startDate,
             data : Ext.Array.map(this.getStore().getRange(), function(rec) {
                 return rec.getData();
             }),
-            afterLoadData : this.parseData,
+            afterLoadData : Ext.bind(this.parseData, this),
             domain : "month",
             subDomain : "day",
             cellSize : 19,
@@ -101,23 +113,17 @@ Ext.define('progress.view.chart.CalHeatMap', {
             subDomainTextFormat : "%d",
             range : this.range,
             highlight : ["now"],
-            legend : [2, 4, 6, 8, 10],
-            legendColors : {
-                empty : "#90caf9",
-                min : "#90caf9",
-                max : "#c62828"
-            },
             onClick : function(date) {
                 Ext.GlobalEvents.fireEvent('gotoDate', date);
             }
-        });
+        }, this.getHeatMapCfg()));
     },
 
     parseData : function(data) {
         var stats = {};
 
         for (var d in data) {
-            stats[data[d].id] = data[d].unit_1;
+            stats[data[d].id] = data[d][this.getUnitName()];
         }
 
         return stats;

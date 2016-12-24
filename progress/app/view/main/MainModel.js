@@ -36,6 +36,10 @@ Ext.define('progress.view.main.MainModel', {
                 {
                     name : 'unit_1',
                     type : 'integer'
+                },
+                {
+                    name : 'unit_2',
+                    type : 'integer'
                 }
             ],
 
@@ -44,7 +48,7 @@ Ext.define('progress.view.main.MainModel', {
                 url : progress.Api.API.PROGRESS_DATA_DAY_VALUES,
 
                 extraParams : {
-                    units : '1',
+                    units : '1,2',
                     limit : 300
                 }
             }
