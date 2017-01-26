@@ -11,7 +11,15 @@ Ext.define('progress.Application', {
         'progress.Localization',
         'progress.Consts',
         'progress.Utils',
-        'progress.Api'
+        'progress.Api',
+
+        'Ext.chart.CartesianChart',
+        'Ext.chart.series.Line',
+        'Ext.chart.axis.Numeric',
+        'Ext.draw.modifier.Highlight',
+        'Ext.chart.interactions.ItemHighlight',
+        'Ext.chart.axis.Time',
+        'Ext.chart.theme.Red'
     ],
 
     stores: [

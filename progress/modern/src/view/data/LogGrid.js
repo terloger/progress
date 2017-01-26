@@ -45,6 +45,49 @@ Ext.define('progress.view.data.LogGrid', {
                     iconCls : 'x-fa fa-refresh'
                 }
             ]
+        },
+        {
+            xtype : 'cartesian',
+            docked : 'top',
+            bind : {
+                store : '{valueLog}'
+            },
+            height : 100,
+            margin : '20 5',
+            series : [
+                {
+                    type : 'line',
+                    xField : 'date',
+                    yField : 'value',
+                    style : {
+                        miterLimit : 3,
+                        lineCap : 'miter',
+                        opacity : 0.7,
+                        lineWidth : 1
+                    },
+
+                    marker : {
+                        type : 'circle',
+                        fillStyle : 'blue',
+                        radius : 1
+                    }
+                }
+            ],
+            axes : [
+                {
+                    type : 'numeric',
+                    position : 'left',
+                    fields : ['value'],
+                    minimum : 0
+                },
+                {
+                    type : 'time',
+                    dateFormat : 'd.m.Y',
+                    visibleRange : [0, 1],
+                    position : 'bottom',
+                    fields : 'date'
+                }
+            ]
         }
     ],
 

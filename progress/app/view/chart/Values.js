@@ -4,15 +4,6 @@ Ext.define('progress.view.chart.Values', {
 
     alias : 'widget.progress_chart_values',
 
-    requires : [
-        'Ext.chart.series.Line',
-        'Ext.chart.axis.Numeric',
-        'Ext.draw.modifier.Highlight',
-        'Ext.chart.interactions.ItemHighlight',
-        'Ext.chart.axis.Time',
-        'Ext.chart.theme.Red'
-    ],
-
     // legend : {
     //     type : 'sprite',
     //     position : 'top',
@@ -72,7 +63,7 @@ Ext.define('progress.view.chart.Values', {
                 position : 'bottom',
                 fields : 'date'
             }
-        ]
+        ];
 
         config.store = new progress.store.Abstract({
             fields : [
