@@ -49,7 +49,7 @@ Ext.define('progress.view.main.MainModel', {
 
                 extraParams : {
                     units : '1,2',
-                    limit : 300
+                    limit : 400
                 }
             }
         },
