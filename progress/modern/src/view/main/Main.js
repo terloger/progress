@@ -132,6 +132,33 @@ Ext.define('progress.view.main.Main', {
                 {
                     xtype : 'component',
                     margin : '0 0 30 0'
+                },
+
+                {
+                    xtype : 'progress_chart_values',
+                    minimum : 50,
+                    units : {
+                        33 : 'Систолическое давление',
+                        34 : 'Диастолическое давление'
+                    },
+                    height : 150,
+                    width : '100%'
+                },
+                {
+                    xtype : 'component',
+                    cls : 'legend_block',
+                    padding : '0 0 0 10',
+                    html : 'Давление: <p><span class="legend_mark phand">&bull;</span>&nbsp;Систолическое давление</p>' +
+                        '<p><span class="legend_mark lhand">&bull;</span>&nbsp;Диастолическое давление</p>',
+                    style : {
+                        borderBottom : '1px solid #CCC'
+                    },
+                    margin : '0 0 10 0'
+                },
+
+                {
+                    xtype : 'component',
+                    margin : '0 0 30 0'
                 }
             ]
         },
